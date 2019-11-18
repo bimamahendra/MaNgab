@@ -3,7 +3,7 @@ package com.stiki.mangab.model;
 
 
 public class SubjectModel {
-    
+
     String subjectId;
     String subjectName;
 

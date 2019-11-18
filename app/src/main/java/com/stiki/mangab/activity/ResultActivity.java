@@ -18,7 +18,7 @@ public class ResultActivity extends AppCompatActivity {
         setContentView(R.layout.activity_result);
         ivQR = findViewById(R.id.ivQRCode);
 
-        bitmap = getIntent().getSerializableExtra(GenerateActivity.BitmapValue);
+        bitmap = getIntent().getParcelableExtra(GenerateActivity.BitmapValue);
 
         ivQR.setImageBitmap(bitmap);
 
