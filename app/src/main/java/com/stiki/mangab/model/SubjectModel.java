@@ -1,11 +1,9 @@
 package com.stiki.mangab.model;
 
-import io.realm.RealmObject;
-import io.realm.annotations.PrimaryKey;
 
-public class SubjectModel extends RealmObject {
 
-    @PrimaryKey
+public class SubjectModel {
+    
     String subjectId;
     String subjectName;
 

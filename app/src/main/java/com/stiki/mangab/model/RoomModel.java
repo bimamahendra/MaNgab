@@ -1,11 +1,9 @@
 package com.stiki.mangab.model;
 
-import io.realm.RealmObject;
-import io.realm.annotations.PrimaryKey;
 
-public class RoomModel extends RealmObject {
+public class RoomModel  {
 
-    @PrimaryKey
+
     String roomId;
     String roomName;
 
