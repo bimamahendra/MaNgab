@@ -4,12 +4,20 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.Point;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.Display;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.google.zxing.WriterException;
 import com.stiki.mangab.R;
+
+import androidmads.library.qrgenearator.QRGContents;
+import androidmads.library.qrgenearator.QRGEncoder;
 
 public class GenerateActivity extends AppCompatActivity {
 
@@ -17,6 +25,7 @@ public class GenerateActivity extends AppCompatActivity {
     TextView tvDosenName, tvDate;
     String dosenName, date, inputValue;
     Bitmap bitmap;
+    QRGEncoder qrgEncoder;
     public static final String BitmapValue = "bitmap";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,15 +62,11 @@ public class GenerateActivity extends AppCompatActivity {
                         intent.putExtra(BitmapValue, bitmap);
                         startActivity(intent);
                     } catch (WriterException e) {
-                        Log.v(TAG, e.toString());
+                        Log.v(BitmapValue, e.toString());
                     }
                 }else {
                     //
                 }
-            }
-        });
-
-
             }
         });
 
