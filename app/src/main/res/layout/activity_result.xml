@@ -30,7 +30,7 @@
         android:gravity="center"
         android:background="@android:color/white">
         <ImageView
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:src="@color/bgCardview"
             android:id="@+id/ivQRCode"/>

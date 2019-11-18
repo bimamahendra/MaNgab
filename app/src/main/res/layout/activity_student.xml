@@ -10,7 +10,7 @@
     android:background="@android:color/white">
 
     <LinearLayout
-        android:layout_weight="0.3"
+        android:layout_weight="0.4"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:orientation="vertical"
@@ -20,7 +20,6 @@
             android:textColor="@android:color/white"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
             android:text="November 12, 2019"
             android:textAppearance="@style/TextAppearance.AppCompat.Small"
             android:fontFamily="@font/montserrat_semibold"
@@ -31,7 +30,6 @@
             android:textColor="@android:color/white"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
             android:text="Hello,"
             android:textAppearance="@style/TextAppearance.AppCompat.Small"
             android:fontFamily="@font/montserrat_bold"/>
@@ -39,8 +37,7 @@
             android:textColor="@android:color/white"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Nanda Bima Mahendra, S.Kom Aamiin"
-            android:layout_marginTop="10dp"
+            android:text="Nanda Bima Mahendra,"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
             android:fontFamily="@font/montserrat_bold"
             android:id="@+id/tvNamaSiswa"/>

@@ -11,10 +11,13 @@ import android.view.Display;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.zxing.WriterException;
 import com.stiki.mangab.R;
+
+import java.io.ByteArrayOutputStream;
 
 import androidmads.library.qrgenearator.QRGContents;
 import androidmads.library.qrgenearator.QRGEncoder;
@@ -43,8 +46,9 @@ public class GenerateActivity extends AppCompatActivity {
                 date = tvDate.getText().toString().replace(" ", "");
 
                 inputValue = dosenName.concat("_").concat(date);
+                Log.d("inputvalue", inputValue);
 
-                if (inputValue.length() >0){
+                if (inputValue.length() > 0){
                     WindowManager manager = (WindowManager) getSystemService(WINDOW_SERVICE);
                     Display display = manager.getDefaultDisplay();
                     Point point = new Point();
@@ -56,14 +60,18 @@ public class GenerateActivity extends AppCompatActivity {
 
                     qrgEncoder = new QRGEncoder(inputValue, null, QRGContents.Type.TEXT, smallerDimension);
 
-                    try{
+                    try {
                         bitmap = qrgEncoder.encodeAsBitmap();
+                        ByteArrayOutputStream stream = new ByteArrayOutputStream();
+                        bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
+                        byte[] byteArray = stream.toByteArray();
                         Intent intent = new Intent(GenerateActivity.this, ResultActivity.class);
-                        intent.putExtra(BitmapValue, bitmap);
+                        intent.putExtra(BitmapValue, byteArray);
                         startActivity(intent);
                     } catch (WriterException e) {
-                        Log.v(BitmapValue, e.toString());
+                        e.printStackTrace();
                     }
+
                 }else {
                     //
                 }
