@@ -1,0 +1,2 @@
+# MaNgab
+Student Attendance Apps
