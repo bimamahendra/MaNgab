@@ -14,4 +14,7 @@ public class CheckStatusLoginResponse extends BaseResponse {
 
     @SerializedName("email")
     public String email;
+
+    @SerializedName("status_password")
+    public int statusPassword;
 }
