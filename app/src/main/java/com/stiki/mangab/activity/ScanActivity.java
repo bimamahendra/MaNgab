@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.Guideline;
 
 import android.Manifest;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
@@ -24,25 +25,21 @@ public class ScanActivity extends AppCompatActivity implements ZXingScannerView.
     private boolean isCaptured = false;
     FrameLayout frameLayoutCamera;
     Guideline guideline;
-    TextView tvValue;
-    Button btnReset;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_scan);
         frameLayoutCamera = findViewById(R.id.frame_layout_camera);
         guideline = findViewById(R.id.guideline);
-        tvValue = findViewById(R.id.text_view_qr_code_value);
-        btnReset = findViewById(R.id.button_reset);
         initScannerView();
 
-        btnReset.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                mScannerView.resumeCameraPreview(ScanActivity.this);
-                initDefaultView();
-            }
-        });
+        /**  btnReset.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+        mScannerView.resumeCameraPreview(ScanActivity.this);
+        initDefaultView();
+        }
+        });**/
     }
 
     private void initScannerView() {
@@ -53,8 +50,8 @@ public class ScanActivity extends AppCompatActivity implements ZXingScannerView.
     }
 
     private void initDefaultView() {
-        tvValue.setText("QR Code Value");
-        btnReset.setVisibility(View.GONE);
+        //tvValue.setText("QR Code Value");
+        //btnReset.setVisibility(View.GONE);
     }
 
     @Override
@@ -90,8 +87,12 @@ public class ScanActivity extends AppCompatActivity implements ZXingScannerView.
     @Override
     public void handleResult(Result result) {
 
-        tvValue.setText(result.getText());
-        btnReset.setVisibility(View.VISIBLE);
+        Intent intent = new Intent(ScanActivity.this, ScanResultActivity.class);
+        intent.putExtra("scanresult",result.getText());
+        startActivity(intent);
+
+        // tvValue.setText(result.getText());
+        //btnReset.setVisibility(View.VISIBLE);
     }
 }
 
