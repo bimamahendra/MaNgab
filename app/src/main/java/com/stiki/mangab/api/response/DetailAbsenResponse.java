@@ -2,13 +2,14 @@ package com.stiki.mangab.api.response;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class DetailAbsenResponse extends BaseResponse {
+public class DetailAbsenResponse extends BaseResponse implements Serializable {
     @SerializedName("data")
     public List<MhsData> data;
 
-    static class MhsData{
+    public static class MhsData implements Serializable{
         @SerializedName("nrp")
         public String nrp;
 
@@ -19,6 +20,6 @@ public class DetailAbsenResponse extends BaseResponse {
         public String email;
 
         @SerializedName("status_absen")
-        public String statusAbsen;
+        public int statusAbsen;
     }
 }

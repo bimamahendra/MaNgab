@@ -13,33 +13,42 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.zxing.Result;
 import com.stiki.mangab.R;
+import com.stiki.mangab.api.Api;
+import com.stiki.mangab.api.ApiClient;
+import com.stiki.mangab.api.response.BaseResponse;
+import com.stiki.mangab.model.User;
+import com.stiki.mangab.preference.AppPreference;
 
 import me.dm7.barcodescanner.zxing.ZXingScannerView;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class ScanActivity extends AppCompatActivity implements ZXingScannerView.ResultHandler{
+    private Api api = ApiClient.getClient();
+    private User user;
 
     private ZXingScannerView mScannerView;
     private boolean isCaptured = false;
+
     FrameLayout frameLayoutCamera;
     Guideline guideline;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_scan);
+
+        user = AppPreference.getUser(this);
+
         frameLayoutCamera = findViewById(R.id.frame_layout_camera);
         guideline = findViewById(R.id.guideline);
         initScannerView();
 
-        /**  btnReset.setOnClickListener(new View.OnClickListener() {
-        @Override
-        public void onClick(View view) {
-        mScannerView.resumeCameraPreview(ScanActivity.this);
-        initDefaultView();
-        }
-        });**/
     }
 
     private void initScannerView() {
@@ -47,11 +56,6 @@ public class ScanActivity extends AppCompatActivity implements ZXingScannerView.
         mScannerView.setAutoFocus(true);
         mScannerView.setResultHandler(this);
         frameLayoutCamera.addView(mScannerView);
-    }
-
-    private void initDefaultView() {
-        //tvValue.setText("QR Code Value");
-        //btnReset.setVisibility(View.GONE);
     }
 
     @Override
@@ -73,8 +77,6 @@ public class ScanActivity extends AppCompatActivity implements ZXingScannerView.
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         if (requestCode == 100){
             initScannerView();
-        }else{
-            //nothing to do
         }
     }
 
@@ -86,13 +88,22 @@ public class ScanActivity extends AppCompatActivity implements ZXingScannerView.
 
     @Override
     public void handleResult(Result result) {
+        if(!isCaptured){
+            isCaptured = true;
+            api.absenMhs(result.getText(), user.noInduk, "1").enqueue(new Callback<BaseResponse>() {
+                @Override
+                public void onResponse(Call<BaseResponse> call, Response<BaseResponse> response) {
+                    isCaptured = false;
+                    Toast.makeText(ScanActivity.this, response.body().message, Toast.LENGTH_SHORT).show();
+                }
 
-        Intent intent = new Intent(ScanActivity.this, ScanResultActivity.class);
-        intent.putExtra("scanresult",result.getText());
-        startActivity(intent);
-
-        // tvValue.setText(result.getText());
-        //btnReset.setVisibility(View.VISIBLE);
+                @Override
+                public void onFailure(Call<BaseResponse> call, Throwable t) {
+                    isCaptured = false;
+                    Toast.makeText(ScanActivity.this, t.getMessage(), Toast.LENGTH_SHORT).show();
+                }
+            });
+        }
     }
 }
 
