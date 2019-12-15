@@ -24,6 +24,7 @@ import com.stiki.mangab.R;
 import com.stiki.mangab.api.Api;
 import com.stiki.mangab.api.ApiClient;
 import com.stiki.mangab.api.response.CheckStatusLoginResponse;
+import com.stiki.mangab.preference.AppPreference;
 
 public class SplashScreenActivity extends AppCompatActivity {
     private Api api;
@@ -55,20 +56,14 @@ public class SplashScreenActivity extends AppCompatActivity {
                 if (response.body().error) {
                     startActivity(new Intent(getApplicationContext(), LoginActivity.class));
                 } else {
+                    AppPreference.saveUser(getApplicationContext(), response.body().toUser());
                     if(response.body().statusPassword == 0){
-                        Intent intent = new Intent(getApplicationContext(), ChangePasswordActivity.class);
-                        intent.putExtra("nrp", response.body().noInduk);
-                        intent.putExtra("tipe", response.body().type);
-                        startActivity(intent);
+                        startActivity(new Intent(getApplicationContext(), ChangePasswordActivity.class));
                     }else {
                         if (response.body().type.equalsIgnoreCase("Mahasiswa")) {
-                            Intent intent = new Intent(getApplicationContext(), StudentActivity.class);
-                            intent.putExtra("nrp", response.body().noInduk);
-                            startActivity(intent);
+                            startActivity(new Intent(getApplicationContext(), StudentActivity.class));
                         } else {
-                            Intent intent = new Intent(getApplicationContext(), LecturerActivity.class);
-                            intent.putExtra("nrp", response.body().noInduk);
-                            startActivity(intent);
+                            startActivity(new Intent(getApplicationContext(), LecturerActivity.class));
                         }
                     }
                 }

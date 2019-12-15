@@ -103,12 +103,21 @@
             android:fontFamily="@font/montserrat_semibold"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
-        <Spinner
-            android:id="@+id/spRoom"
-            android:drawablePadding="20dp"
-            android:fontFamily="@font/montserrat_semibold"
+        <EditText
             android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/etRoom"/>
+
+        <TextView
+            android:layout_marginTop="5dp"
+            android:text="Topic"
+            android:fontFamily="@font/montserrat_semibold"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/etTopic"/>
 
         <Button
             android:id="@+id/btnGenerate"

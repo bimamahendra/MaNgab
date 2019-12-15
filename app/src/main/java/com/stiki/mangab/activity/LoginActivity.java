@@ -19,6 +19,7 @@ import com.stiki.mangab.R;
 import com.stiki.mangab.api.Api;
 import com.stiki.mangab.api.ApiClient;
 import com.stiki.mangab.api.response.LoginResponse;
+import com.stiki.mangab.preference.AppPreference;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -45,23 +46,14 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
                 if(!response.body().error){
+                    AppPreference.saveUser(getApplicationContext(), response.body().toUser());
                     if(response.body().statusPassword == 0){
-                        Intent intent = new Intent(getApplicationContext(), ChangePasswordActivity.class);
-                        intent.putExtra("nrp", etNrp.getText().toString());
-                        intent.putExtra("tipe", response.body().type);
-                        finish();
-                        startActivity(intent);
+                        startActivity(new Intent(getApplicationContext(), ChangePasswordActivity.class));
                     } else {
                         if (response.body().type.equalsIgnoreCase("Mahasiswa")) {
-                            Intent intent = new Intent(getApplicationContext(), StudentActivity.class);
-                            intent.putExtra("nrp", response.body().noInduk);
-                            finish();
-                            startActivity(intent);
+                            startActivity(new Intent(getApplicationContext(), StudentActivity.class));
                         } else {
-                            Intent intent = new Intent(getApplicationContext(), LecturerActivity.class);
-                            intent.putExtra("nrp", response.body().noInduk);
-                            finish();
-                            startActivity(intent);
+                            startActivity(new Intent(getApplicationContext(), LecturerActivity.class));
                         }
                     }
                 } else {
