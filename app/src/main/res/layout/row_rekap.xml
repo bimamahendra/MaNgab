@@ -1,73 +1,76 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:orientation="horizontal"
     android:padding="5dp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="5dp"
         android:layout_weight="1"
-        android:gravity="left">
+        android:gravity="left"
+        android:orientation="vertical"
+        android:padding="5dp">
+
         <TextView
-            android:textColor="@color/colorText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="NRP"
-            android:textSize="12sp"
             android:id="@+id/tvNRP"
-            android:fontFamily="@font/montserrat_light" />
-        <TextView
-            android:textColor="@color/colorText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Nama"
-            android:textSize="12sp"
+            android:fontFamily="@font/montserrat_light"
+            android:text="NRP"
+            android:textColor="@color/colorText"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/tvName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:fontFamily="@font/montserrat_semibold"
-            android:id="@+id/tvName"/>
+            android:text="Nama"
+            android:textColor="@color/colorText"
+            android:textSize="12sp" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="horizontal"
-        android:padding="5dp"
         android:layout_weight="1"
-        android:gravity="left">
+        android:gravity="left"
+        android:orientation="horizontal"
+        android:padding="5dp">
+
         <Button
+            android:id="@+id/btnIzin"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="I"
-            android:textColor="#ffffff"
+            android:layout_marginEnd="8dp"
             android:layout_weight="1"
             android:background="@color/colorIzin"
-            android:id="@+id/btnIzin"
-            android:layout_marginEnd="8dp"
-            android:fontFamily="@font/montserrat_semibold"/>
+            android:fontFamily="@font/montserrat_semibold"
+            android:text="I"
+            android:textColor="#ffffff" />
 
         <Button
+            android:id="@+id/btnTugas"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@color/colorTugas"
+            android:fontFamily="@font/montserrat_semibold"
             android:text="S"
             android:textColor="#ffffff"
-            android:layout_weight="1"
-            android:id="@+id/btnSakit"
-            android:background="@color/colorSakit"
-            android:layout_marginEnd="8dp"
-            android:fontFamily="@font/montserrat_semibold"/>
+            android:layout_marginEnd="8dp"/>
 
         <Button
+            android:id="@+id/btnSakit"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="T"
-            android:textColor="#ffffff"
             android:layout_weight="1"
-            android:id="@+id/btnTugas"
-            android:background="@color/colorTugas"
-            android:fontFamily="@font/montserrat_semibold"/>
+            android:background="@color/colorSakit"
+            android:fontFamily="@font/montserrat_semibold"
+            android:text="A"
+            android:textColor="#ffffff" />
     </LinearLayout>
 
 </LinearLayout>
