@@ -52,10 +52,12 @@
             android:layout_marginBottom="10dp"
             android:padding="10dp"/>
 
+
         <androidx.recyclerview.widget.RecyclerView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/rvList"
             tools:listitem="@layout/row_students"/>
+
     </LinearLayout>
 </LinearLayout>

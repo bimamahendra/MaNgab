@@ -11,4 +11,6 @@
 
     <color name="colorIzin">#4CE053</color>
     <color name="colorSakit">#E04C62</color>
+    <color name="bgCardview">#F1F1F1</color>
+    <color name="colorLightGray">#EBEBEB</color>
 </resources>
