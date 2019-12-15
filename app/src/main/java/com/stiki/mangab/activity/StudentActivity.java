@@ -25,6 +25,7 @@ public class StudentActivity extends AppCompatActivity {
 
     private CardView cvScan;
     private Button btnLogout;
+    private CardView cvHistory;
 
     private String nrp;
 
@@ -39,11 +40,20 @@ public class StudentActivity extends AppCompatActivity {
 
         cvScan = findViewById(R.id.cvScan);
         btnLogout = findViewById(R.id.btnLogout);
+        cvHistory = findViewById(R.id.cvHistorySiswa);
 
         cvScan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(StudentActivity.this, ScanActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        cvHistory.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(StudentActivity.this, HistoryActivity.class);
                 startActivity(intent);
             }
         });
