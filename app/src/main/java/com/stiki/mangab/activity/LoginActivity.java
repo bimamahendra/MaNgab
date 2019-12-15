@@ -49,15 +49,18 @@ public class LoginActivity extends AppCompatActivity {
                         Intent intent = new Intent(getApplicationContext(), ChangePasswordActivity.class);
                         intent.putExtra("nrp", etNrp.getText().toString());
                         intent.putExtra("tipe", response.body().type);
+                        finish();
                         startActivity(intent);
                     } else {
                         if (response.body().type.equalsIgnoreCase("Mahasiswa")) {
                             Intent intent = new Intent(getApplicationContext(), StudentActivity.class);
                             intent.putExtra("nrp", response.body().noInduk);
+                            finish();
                             startActivity(intent);
                         } else {
                             Intent intent = new Intent(getApplicationContext(), LecturerActivity.class);
                             intent.putExtra("nrp", response.body().noInduk);
+                            finish();
                             startActivity(intent);
                         }
                     }

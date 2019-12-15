@@ -56,6 +56,7 @@ public class StudentActivity extends AppCompatActivity {
                     public void onResponse(Call<BaseResponse> call, Response<BaseResponse> response) {
                         if (!response.body().error) {
                             Toast.makeText(StudentActivity.this, response.body().message, Toast.LENGTH_SHORT).show();
+                            finish();
                             startActivity(new Intent(getApplicationContext(), LoginActivity.class));
                         } else {
                             Toast.makeText(StudentActivity.this, response.body().message, Toast.LENGTH_SHORT).show();
