@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="colorPrimary">#005792</color>
-    <color name="colorPrimaryDark">#FFDD00</color>
+    <color name="colorPrimaryDark">#005792</color>
     <color name="colorAccent">#0098FF</color>
     <color name="colorText">#504F60</color>
     <color name="colorBlue">#005792</color>
     <color name="colorBlueNeon">#033fff</color>
     <color name="colorBlueLight">#53cde2</color>
     <color name="bgCardview">#F9FAFA</color>
-    <color name="colorIzin">#4CE053</color>
-    <color name="colorSakit">#E04C62</color>
+    <color name="colorIzin">#4CAF50</color>
+    <color name="colorSakit">#F44336</color>
+    <color name="colorTugas">#FFC107</color>
     <color name="colorLightGray">#EBEBEB</color>
 </resources>

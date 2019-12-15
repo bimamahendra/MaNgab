@@ -46,7 +46,8 @@
             android:text="12 Desember 2019 10:10"
             android:fontFamily="@font/montserrat_semibold"
             android:layout_gravity="center_vertical"
-            android:textSize="12sp"/>
+            android:textSize="12sp"
+            android:textColor="@color/colorText"/>
     </LinearLayout>
 
     <LinearLayout
@@ -67,7 +68,8 @@
             android:text="Nama Dosen"
             android:fontFamily="@font/montserrat_semibold"
             android:layout_gravity="center_vertical"
-            android:textSize="12sp"/>
+            android:textSize="12sp"
+            android:textColor="@color/colorText"/>
     </LinearLayout>
 
     <LinearLayout
@@ -88,7 +90,8 @@
             android:text="Hadir"
             android:fontFamily="@font/montserrat_semibold"
             android:layout_gravity="center_vertical"
-            android:textSize="12sp"/>
+            android:textSize="12sp"
+            android:textColor="@color/colorText"/>
     </LinearLayout>
 
 </LinearLayout>

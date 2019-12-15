@@ -40,21 +40,34 @@
         <Button
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Izin"
+            android:text="I"
             android:textColor="#ffffff"
             android:layout_weight="1"
             android:background="@color/colorIzin"
             android:id="@+id/btnIzin"
-            android:layout_marginEnd="5dp"/>
+            android:layout_marginEnd="8dp"
+            android:fontFamily="@font/montserrat_semibold"/>
 
         <Button
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Sakit"
+            android:text="S"
             android:textColor="#ffffff"
             android:layout_weight="1"
             android:id="@+id/btnSakit"
-            android:background="@color/colorSakit"/>
+            android:background="@color/colorSakit"
+            android:layout_marginEnd="8dp"
+            android:fontFamily="@font/montserrat_semibold"/>
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="T"
+            android:textColor="#ffffff"
+            android:layout_weight="1"
+            android:id="@+id/btnTugas"
+            android:background="@color/colorTugas"
+            android:fontFamily="@font/montserrat_semibold"/>
     </LinearLayout>
 
 </LinearLayout>
