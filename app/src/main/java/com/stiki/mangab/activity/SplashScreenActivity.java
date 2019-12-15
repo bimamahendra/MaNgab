@@ -11,6 +11,7 @@ import retrofit2.Response;
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
@@ -46,15 +47,36 @@ public class SplashScreenActivity extends AppCompatActivity {
     }
 
     private void checkStatusLogin(){
+        Log.e("Device Id", getDeviceId());
+
         api.checkStatusLogin(getDeviceId()).enqueue(new Callback<CheckStatusLoginResponse>() {
             @Override
             public void onResponse(Call<CheckStatusLoginResponse> call, Response<CheckStatusLoginResponse> response) {
-
+                if (response.body().error) {
+                    startActivity(new Intent(getApplicationContext(), LoginActivity.class));
+                } else {
+                    if(response.body().statusPassword == 0){
+                        Intent intent = new Intent(getApplicationContext(), ChangePasswordActivity.class);
+                        intent.putExtra("nrp", response.body().noInduk);
+                        intent.putExtra("tipe", response.body().type);
+                        startActivity(intent);
+                    }else {
+                        if (response.body().type.equalsIgnoreCase("Mahasiswa")) {
+                            Intent intent = new Intent(getApplicationContext(), StudentActivity.class);
+                            intent.putExtra("nrp", response.body().noInduk);
+                            startActivity(intent);
+                        } else {
+                            Intent intent = new Intent(getApplicationContext(), LecturerActivity.class);
+                            intent.putExtra("nrp", response.body().noInduk);
+                            startActivity(intent);
+                        }
+                    }
+                }
             }
 
             @Override
             public void onFailure(Call<CheckStatusLoginResponse> call, Throwable t) {
-
+                Log.e("checkStatusLogin", t.getMessage());
             }
         });
     }

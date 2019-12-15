@@ -15,6 +15,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".activity.ChangePasswordActivity"></activity>
         <activity android:name=".activity.ScanResultActivity"></activity>
         <activity android:name=".activity.SplashScreenActivity">
             <intent-filter>
@@ -28,7 +29,7 @@
         <activity android:name=".activity.StudentActivity" />
         <activity android:name=".activity.LecturerActivity" />
         <activity android:name=".activity.ScanActivity" />
-        <activity android:name=".activity.MainActivity" />
+        <activity android:name=".activity.LoginActivity" />
     </application>
 
 </manifest>

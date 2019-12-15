@@ -16,5 +16,5 @@ public class LoginResponse extends BaseResponse {
     public String email;
 
     @SerializedName("status_password")
-    public String statusPassword;
+    public int statusPassword;
 }
