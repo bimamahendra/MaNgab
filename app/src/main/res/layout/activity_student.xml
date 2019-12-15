@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".activity.StudentActivity"
+    tools:context=".activity.MainActivity"
     android:fitsSystemWindows="true"
     android:background="@android:color/white">
 
@@ -94,6 +94,44 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:text="Make Class Attendance"
+                    android:padding="5dp"
+                    android:fontFamily="@font/montserrat_light"
+                    android:textColor="@android:color/darker_gray"/>
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:foreground="?android:attr/selectableItemBackground"
+            android:clickable="true"
+            android:id="@+id/cvGenerate"
+            android:layout_width="200dp"
+            android:layout_height="0dp"
+            android:layout_weight="0.8"
+            android:layout_margin="10dp"
+            CardView_cardCornerRadius="40dp"
+            android:visibility="gone">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:gravity="center">
+                <ImageView
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:src="@drawable/icon_generate"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:layout_marginTop="10dp"
+                    android:text="Generate QR Code"
+                    android:fontFamily="@font/montserrat_semibold"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="Make Attendance QR Code"
                     android:padding="5dp"
                     android:fontFamily="@font/montserrat_light"
                     android:textColor="@android:color/darker_gray"/>

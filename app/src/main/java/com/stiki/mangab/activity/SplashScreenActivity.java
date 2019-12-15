@@ -55,16 +55,15 @@ public class SplashScreenActivity extends AppCompatActivity {
             public void onResponse(Call<CheckStatusLoginResponse> call, Response<CheckStatusLoginResponse> response) {
                 if (response.body().error) {
                     startActivity(new Intent(getApplicationContext(), LoginActivity.class));
+                    finishAffinity();
                 } else {
                     AppPreference.saveUser(getApplicationContext(), response.body().toUser());
                     if(response.body().statusPassword == 0){
                         startActivity(new Intent(getApplicationContext(), ChangePasswordActivity.class));
+                        finishAffinity();
                     }else {
-                        if (response.body().type.equalsIgnoreCase("Mahasiswa")) {
-                            startActivity(new Intent(getApplicationContext(), StudentActivity.class));
-                        } else {
-                            startActivity(new Intent(getApplicationContext(), LecturerActivity.class));
-                        }
+                        startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                        finishAffinity();
                     }
                 }
             }

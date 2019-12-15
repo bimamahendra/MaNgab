@@ -26,12 +26,12 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class StudentActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity {
 
     private Api api = ApiClient.getClient();
     private User user;
 
-    private CardView cvScan;
+    private CardView cvScan, cvGenerate;
     TextView tvCurrentDate, tvName, tvNoInduk;
     private Button btnLogout;
 
@@ -43,18 +43,31 @@ public class StudentActivity extends AppCompatActivity {
         user = AppPreference.getUser(this);
 
         cvScan = findViewById(R.id.cvScan);
+        cvGenerate = findViewById(R.id.cvGenerate);
         btnLogout = findViewById(R.id.btnLogout);
         tvCurrentDate = findViewById(R.id.tvCurrentDate);
         tvName = findViewById(R.id.tvName);
         tvNoInduk = findViewById(R.id.tvNoInduk);
 
-        tvCurrentDate.setText(new SimpleDateFormat("MM dd, yyyy", Locale.getDefault())
+        tvCurrentDate.setText(new SimpleDateFormat("MMMM dd, yyyy", Locale.getDefault())
                 .format(Calendar.getInstance().getTime()));
         tvName.setText(user.nama);
         tvNoInduk.setText(user.noInduk);
 
+        if (user.type.equalsIgnoreCase("mahasiswa")){
+            cvGenerate.setVisibility(View.GONE);
+            cvScan.setVisibility(View.VISIBLE);
+        }else{
+            cvGenerate.setVisibility(View.VISIBLE);
+            cvScan.setVisibility(View.GONE);
+        }
         cvScan.setOnClickListener(v -> {
-            Intent intent = new Intent(StudentActivity.this, ScanActivity.class);
+            Intent intent = new Intent(MainActivity.this, ScanActivity.class);
+            startActivity(intent);
+        });
+
+        cvGenerate.setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, GenerateActivity.class);
             startActivity(intent);
         });
 
@@ -62,10 +75,11 @@ public class StudentActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<BaseResponse> call, Response<BaseResponse> response) {
                 if (!response.body().error) {
-                    Toast.makeText(StudentActivity.this, response.body().message, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this, response.body().message, Toast.LENGTH_SHORT).show();
                     startActivity(new Intent(getApplicationContext(), LoginActivity.class));
+                    finishAffinity();
                 } else {
-                    Toast.makeText(StudentActivity.this, response.body().message, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this, response.body().message, Toast.LENGTH_SHORT).show();
                 }
             }
 

@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -47,11 +46,7 @@ public class ChangePasswordActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<BaseResponse> call, Response<BaseResponse> response) {
                 if (!response.body().error) {
-                    if (user.type.equalsIgnoreCase("Mahasiswa")) {
-                        startActivity(new Intent(getApplicationContext(), StudentActivity.class));
-                    } else {
-                        startActivity(new Intent(getApplicationContext(), LecturerActivity.class));
-                    }
+                        startActivity(new Intent(getApplicationContext(), MainActivity.class));
                 } else {
                     Toast.makeText(ChangePasswordActivity.this, response.body().message, Toast.LENGTH_SHORT).show();
                 }

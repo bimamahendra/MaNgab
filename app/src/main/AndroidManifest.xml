@@ -5,7 +5,6 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.CAMERA" />
-    <uses-permission android:name="android.permission.CAMERA" />
 
     <application
         android:name=".CoreApplication"
@@ -16,11 +15,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".activity.RekapActivity"></activity>
-        <activity android:name=".activity.ChangePasswordActivity" />
+        <activity android:name=".activity.ChangePasswordActivity"
+            android:noHistory="true"/>
         <activity android:name=".activity.ScanResultActivity" />
         <activity android:name=".activity.HistoryActivity"></activity>
-        <activity android:name=".activity.ChangePasswordActivity" />
-        <activity android:name=".activity.ScanResultActivity" />
         <activity android:name=".activity.SplashScreenActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -30,10 +28,10 @@
         </activity>
         <activity android:name=".activity.ResultActivity" />
         <activity android:name=".activity.GenerateActivity" />
-        <activity android:name=".activity.StudentActivity" />
-        <activity android:name=".activity.LecturerActivity" />
+        <activity android:name=".activity.MainActivity" />
         <activity android:name=".activity.ScanActivity" />
-        <activity android:name=".activity.LoginActivity" />
+        <activity android:name=".activity.LoginActivity"
+            android:noHistory="true"/>
     </application>
 
 </manifest>

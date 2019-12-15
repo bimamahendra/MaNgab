@@ -10,7 +10,6 @@ import android.os.Bundle;
 import android.provider.Settings;
 import android.telephony.TelephonyManager;
 import android.util.Log;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -50,11 +49,7 @@ public class LoginActivity extends AppCompatActivity {
                     if(response.body().statusPassword == 0){
                         startActivity(new Intent(getApplicationContext(), ChangePasswordActivity.class));
                     } else {
-                        if (response.body().type.equalsIgnoreCase("Mahasiswa")) {
-                            startActivity(new Intent(getApplicationContext(), StudentActivity.class));
-                        } else {
-                            startActivity(new Intent(getApplicationContext(), LecturerActivity.class));
-                        }
+                        startActivity(new Intent(getApplicationContext(), MainActivity.class));
                     }
                 } else {
                     Toast.makeText(LoginActivity.this, response.body().message, Toast.LENGTH_SHORT).show();
