@@ -10,45 +10,48 @@
     android:background="@android:color/white">
 
     <LinearLayout
-        android:layout_weight="0.4"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:orientation="vertical"
+        android:layout_weight="0.5"
         android:background="@color/colorBlue"
+        android:orientation="vertical"
         android:padding="20dp">
-        <TextView
-            android:textColor="@android:color/white"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="November 12, 2019"
-            android:textAppearance="@style/TextAppearance.AppCompat.Small"
-            android:fontFamily="@font/montserrat_semibold"
-            android:layout_gravity="right"
-            android:id="@+id/tvDatenow"/>
 
         <TextView
-            android:textColor="@android:color/white"
+            android:id="@+id/tvDatenowSiswa"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Hello,"
-            android:textAppearance="@style/TextAppearance.AppCompat.Small"
-            android:fontFamily="@font/montserrat_bold"/>
-        <TextView
-            android:textColor="@android:color/white"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Nanda Bima Mahendra"
-            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-            android:fontFamily="@font/montserrat_bold"
-            android:id="@+id/tvNamaDosen"/>
-        <TextView
-            android:textColor="@android:color/white"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="182197368624"
-            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:layout_gravity="right"
             android:fontFamily="@font/montserrat_semibold"
-            android:id="@+id/tvNIPDosen"/>
+            android:text="November 12, 2019"
+            android:textSize="12sp"
+            android:textColor="@android:color/white" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/montserrat_bold"
+            android:text="Hello,"
+            android:textSize="13sp"
+            android:textColor="@android:color/white" />
+
+        <TextView
+            android:id="@+id/tvNamaDosen"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/montserrat_bold"
+            android:text="Dosen,"
+            android:textSize="16sp"
+            android:textColor="@android:color/white" />
+
+        <TextView
+            android:id="@+id/tvNIPDosen"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/montserrat_bold"
+            android:text="182197368624"
+            android:textSize="14sp"
+            android:textColor="@android:color/white" />
     </LinearLayout>
 
     <LinearLayout
@@ -58,7 +61,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="0.3"
-        android:weightSum="2">
+        android:weightSum="2"
+        android:layout_marginTop="20dp">
 
         <androidx.cardview.widget.CardView
             android:foreground="?android:attr/selectableItemBackground"
