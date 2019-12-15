@@ -40,7 +40,7 @@
             android:text="Mahasiswa Ngabsen"
             android:textSize="15sp"
             android:textAlignment="center"
-            android:fontFamily="@font/montserrat_light"
+            android:fontFamily="@font/montserrat_semibold"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"/>
@@ -68,7 +68,9 @@
             android:hint="112345"
             android:fontFamily="@font/montserrat_semibold"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:maxLines="1"/>
         <TextView
             android:layout_marginTop="5dp"
             android:text="Password"
@@ -83,7 +85,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/montserrat_semibold"
-            android:inputType="textPassword" />
+            android:inputType="textPassword"
+            android:maxLines="1"/>
         <Button
             android:id="@+id/btnLogin"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
