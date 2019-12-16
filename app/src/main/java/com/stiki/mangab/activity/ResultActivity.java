@@ -7,10 +7,13 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.os.Handler;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -21,12 +24,15 @@ import com.stiki.mangab.api.ApiClient;
 import com.stiki.mangab.api.response.DetailAbsenResponse;
 import com.stiki.mangab.api.response.GenerateQrCodeResponse;
 
+import java.util.ArrayList;
+
 public class ResultActivity extends AppCompatActivity implements Callback<DetailAbsenResponse> {
     Api api = ApiClient.getClient();
     Call<DetailAbsenResponse> request;
 
     ImageView ivQR;
     RecyclerView rvList;
+    Button btnDone;
 
     GenerateQrCodeResponse generateQrCodeResponse;
 
@@ -57,6 +63,7 @@ public class ResultActivity extends AppCompatActivity implements Callback<Detail
 
         ivQR = findViewById(R.id.ivQRCode);
         rvList = findViewById(R.id.rvList);
+        btnDone = findViewById(R.id.btnDone);
 
         rvList.setLayoutManager(new LinearLayoutManager(this));
         rvList.setAdapter(new DetailAbsensiAdapter(generateQrCodeResponse.dataMhs));
@@ -67,6 +74,15 @@ public class ResultActivity extends AppCompatActivity implements Callback<Detail
         ivQR.setImageBitmap(bmp);
 
         handler.postDelayed(runnable, 5000);
+
+        btnDone.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), RekapActivity.class);
+                intent.putExtra("absen", (ArrayList)((DetailAbsensiAdapter) rvList.getAdapter()).getDataMhs());
+                startActivity(intent);
+            }
+        });
     }
 
     @Override

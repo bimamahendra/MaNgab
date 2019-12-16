@@ -23,7 +23,7 @@
             android:fontFamily="@font/montserrat_semibold"/>
     </LinearLayout>
     <LinearLayout
-        android:layout_weight="0.8"
+        android:layout_weight="0.3"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:orientation="vertical"
@@ -58,7 +58,19 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/rvList"
-            tools:listitem="@layout/row_students"/>
+            tools:listitem="@layout/row_students"
+            android:layout_weight="1"/>
+
+        <Button
+            android:id="@+id/btnDone"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textColor="#FFF"
+            android:background="@drawable/btn_round"
+            android:textAllCaps="false"
+            android:text="Done"
+            android:layout_width="match_parent"
+            android:fontFamily="@font/montserrat_bold"
+            android:layout_height="wrap_content" />
 
     </LinearLayout>
 

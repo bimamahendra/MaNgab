@@ -45,6 +45,10 @@ public class DetailAbsensiAdapter extends RecyclerView.Adapter<DetailAbsensiAdap
         notifyDataSetChanged();
     }
 
+    public List<DetailAbsenResponse.MhsData> getDataMhs() {
+        return dataMhs;
+    }
+
     class DetailAbsensiVH extends RecyclerView.ViewHolder{
         TextView tvName, tvNrp;
         ImageView ivStatus;
