@@ -1,76 +1,97 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="horizontal"
-    android:padding="5dp">
+    android:layout_marginBottom="7.5dp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:gravity="left"
-        android:orientation="vertical"
-        android:padding="5dp">
-
-        <TextView
-            android:id="@+id/tvNRP"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/montserrat_light"
-            android:text="NRP"
-            android:textColor="@color/colorText"
-            android:textSize="12sp" />
-
-        <TextView
-            android:id="@+id/tvName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/montserrat_semibold"
-            android:text="Nama"
-            android:textColor="@color/colorText"
-            android:textSize="12sp" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:gravity="left"
         android:orientation="horizontal"
         android:padding="5dp">
 
-        <Button
-            android:id="@+id/btnIzin"
-            android:layout_width="0dp"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
             android:layout_weight="1"
-            android:background="@color/colorIzin"
-            android:fontFamily="@font/montserrat_semibold"
-            android:text="I"
-            android:textColor="#ffffff" />
+            android:gravity="left"
+            android:orientation="vertical"
+            android:padding="5dp">
 
-        <Button
-            android:id="@+id/btnTugas"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="@color/colorTugas"
-            android:fontFamily="@font/montserrat_semibold"
-            android:text="S"
-            android:textColor="#ffffff"
-            android:layout_marginEnd="8dp"/>
+            <TextView
+                android:id="@+id/tvNRP"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/montserrat_light"
+                android:layout_marginBottom="5dp"
+                android:text="NRP"
+                android:textColor="@color/colorText"
+                android:textAppearance="@style/TextAppearance.AppCompat.Small" />
 
-        <Button
-            android:id="@+id/btnSakit"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="@color/colorSakit"
-            android:fontFamily="@font/montserrat_semibold"
-            android:text="A"
-            android:textColor="#ffffff" />
+            <TextView
+                android:id="@+id/tvName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/montserrat_semibold"
+                android:layout_marginBottom="5dp"
+                android:text="Nama"
+                android:textColor="@color/colorText"
+                android:textAppearance="@style/TextAppearance.AppCompat.Small" />
+
+            <TextView
+                android:id="@+id/tvStatus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/montserrat_semibold"
+                android:text="( Status )"
+                android:textColor="@color/colorText"
+                android:textAppearance="@style/TextAppearance.AppCompat.Small" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1.5"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btnIzin"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_weight="1"
+                android:background="@color/colorIzin"
+                android:fontFamily="@font/montserrat_semibold"
+                android:textAllCaps="false"
+                android:text="Izin"
+                android:textColor="#ffffff" />
+
+            <Button
+                android:id="@+id/btnTugas"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@color/colorTugas"
+                android:fontFamily="@font/montserrat_semibold"
+                android:textAllCaps="false"
+                android:text="Sakit"
+                android:textColor="#ffffff"
+                android:layout_marginEnd="8dp"/>
+
+            <Button
+                android:id="@+id/btnSakit"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@color/colorSakit"
+                android:fontFamily="@font/montserrat_semibold"
+                android:text="A"
+                android:textColor="#ffffff"
+                android:visibility="gone"/>
+        </LinearLayout>
+
     </LinearLayout>
 
-</LinearLayout>
+</androidx.cardview.widget.CardView>

@@ -1,66 +1,76 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:orientation="horizontal"
-    android:padding="5dp">
+    android:layout_marginBottom="7.5dp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="left"
-        android:orientation="vertical"
+        android:orientation="horizontal"
+        android:gravity="center"
         android:padding="5dp">
 
-        <TextView
-            android:id="@+id/tvNRP"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/montserrat_light"
-            android:text="NRP"
-            android:textColor="@color/colorText"
-            android:textSize="12sp" />
+            android:orientation="vertical"
+            android:layout_weight="1">
 
-        <TextView
-            android:id="@+id/tvName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/montserrat_semibold"
-            android:text="Nama"
-            android:textColor="@color/colorText"
-            android:textSize="12sp" />
-    </LinearLayout>
+            <TextView
+                android:id="@+id/tvNRP"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/montserrat_light"
+                android:text="NRP"
+                android:layout_marginBottom="5dp"
+                android:textColor="@color/colorText"
+                android:textSize="12sp" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="right"
-        android:orientation="vertical"
-        android:padding="5dp">
+            <TextView
+                android:id="@+id/tvName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/montserrat_semibold"
+                android:text="Nama"
+                android:textColor="@color/colorText"
+                android:textSize="12sp" />
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:id="@+id/layAbsent"
-            android:visibility="invisible">
+            android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/tvTime"
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/montserrat_light"
-                android:text="13:12"
-                android:textColor="@color/colorText"
-                android:textSize="10sp" />
+                android:orientation="vertical"
+                android:gravity="center"
+                android:id="@+id/layAbsent"
+                android:visibility="invisible">
 
-            <ImageView
-                android:id="@+id/ivStatus"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_check_circle_black_24dp" />
+                <TextView
+                    android:id="@+id/tvTime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/montserrat_light"
+                    android:text="13:12"
+                    android:textColor="@color/colorText"
+                    android:textSize="10sp" />
+
+                <ImageView
+                    android:id="@+id/ivStatus"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_check_circle_black_24dp" />
+
+            </LinearLayout>
+
         </LinearLayout>
 
     </LinearLayout>
 
-</RelativeLayout>
+</androidx.cardview.widget.CardView>

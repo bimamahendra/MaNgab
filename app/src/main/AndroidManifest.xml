@@ -14,11 +14,11 @@
         android:roundIcon="@mipmap/ic_mangab_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.RekapActivity"></activity>
+        <activity android:name=".activity.RekapActivity"/>
         <activity android:name=".activity.ChangePasswordActivity"
             android:noHistory="true"/>
         <activity android:name=".activity.ScanResultActivity" />
-        <activity android:name=".activity.HistoryActivity"></activity>
+        <activity android:name=".activity.HistoryActivity"/>
         <activity android:name=".activity.SplashScreenActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -34,13 +34,14 @@
             android:layout_height="match_parent"
             android:src="@drawable/icon_generate"/>
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
         android:orientation="vertical"
         android:background="@android:color/white"
-        android:padding="30dp">
+        android:padding="16dp">
 
         <TextView
             android:layout_marginTop="5dp"
@@ -126,7 +127,7 @@
             android:background="@drawable/btn_round"
             android:layout_marginTop="20dp"
             android:textAllCaps="false"
-            android:text="GENERATE"
+            android:text="Generate"
             android:layout_width="match_parent"
             android:fontFamily="@font/montserrat_bold"
             android:layout_height="wrap_content" />

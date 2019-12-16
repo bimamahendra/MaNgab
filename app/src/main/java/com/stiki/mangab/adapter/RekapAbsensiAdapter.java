@@ -1,5 +1,6 @@
 package com.stiki.mangab.adapter;
 
+import android.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -30,7 +31,37 @@ public class RekapAbsensiAdapter extends RecyclerView.Adapter<RekapAbsensiAdapte
 
     @Override
     public void onBindViewHolder(@NonNull RekapAbsensiVH holder, int position) {
+        holder.tvNrp.setText(listMhs.get(position).nrp);
+        holder.tvName.setText(listMhs.get(position).nama);
+        holder.tvStatus.setText("( Alpa )");
 
+        holder.btnIzin.setOnClickListener(v -> {
+            AlertDialog alertDialog = new AlertDialog.Builder(v.getContext()).create();
+            alertDialog.setMessage("Change attendance to \"Izin\"?");
+            alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "Yes",
+                    (dialog, which) -> {
+                        listMhs.get(position).statusAbsen = 2;
+                        holder.tvStatus.setText("( Izin )");
+                        notifyDataSetChanged();
+                    });
+            alertDialog.setButton(AlertDialog.BUTTON_NEGATIVE, "No",
+                    (dialog, which) -> dialog.dismiss());
+            alertDialog.show();
+        });
+
+        holder.btnSakit.setOnClickListener(v -> {
+            AlertDialog alertDialog = new AlertDialog.Builder(v.getContext()).create();
+            alertDialog.setMessage("Change attendance to \"Sakit\"?");
+            alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "Yes",
+                    (dialog, which) -> {
+                        listMhs.get(position).statusAbsen = 3;
+                        holder.tvStatus.setText("( Sakit )");
+                        notifyDataSetChanged();
+                    });
+            alertDialog.setButton(AlertDialog.BUTTON_NEGATIVE, "No",
+                    (dialog, which) -> dialog.dismiss());
+            alertDialog.show();
+        });
     }
 
     @Override
@@ -39,10 +70,15 @@ public class RekapAbsensiAdapter extends RecyclerView.Adapter<RekapAbsensiAdapte
     }
 
     class RekapAbsensiVH extends RecyclerView.ViewHolder{
-        public TextView tvNrp, tvName;
-        public Button btnIzin, btnSakit;
-        public RekapAbsensiVH(@NonNull View itemView) {
+        TextView tvNrp, tvName, tvStatus;
+        Button btnIzin, btnSakit;
+        RekapAbsensiVH(@NonNull View itemView) {
             super(itemView);
+            tvNrp = itemView.findViewById(R.id.tvNRP);
+            tvName = itemView.findViewById(R.id.tvName);
+            tvStatus = itemView.findViewById(R.id.tvStatus);
+            btnIzin = itemView.findViewById(R.id.btnIzin);
+            btnSakit = itemView.findViewById(R.id.btnSakit);
         }
     }
 }

@@ -1,97 +1,104 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="10dp">
-
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="7.5dp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorBlue">
+        android:orientation="vertical"
+        android:padding="5dp">
 
-        <ImageView
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:src="@drawable/icon_book2"
-            android:layout_marginEnd="10dp"
-            android:layout_marginStart="10dp"/>
+            android:background="@color/colorBlue">
 
-        <TextView
-            android:layout_width="wrap_content"
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/icon_book2"
+                android:layout_marginEnd="10dp"
+                android:layout_marginStart="10dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Mata Kuliah"
+                android:fontFamily="@font/montserrat_bold"
+                android:layout_gravity="center_vertical"
+                android:textColor="@android:color/white"
+                android:textSize="14sp"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Mata Kuliah"
-            android:fontFamily="@font/montserrat_bold"
-            android:layout_gravity="center_vertical"
-            android:textColor="@android:color/white"
-            android:textSize="14sp"/>
+            android:paddingTop="5dp">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/icon_clock"
+                android:layout_marginEnd="10dp"
+                android:layout_marginStart="10dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="12 Desember 2019 10:10"
+                android:fontFamily="@font/montserrat_semibold"
+                android:layout_gravity="center_vertical"
+                android:textSize="12sp"
+                android:textColor="@color/colorText"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/icon_dosen"
+                android:layout_marginEnd="10dp"
+                android:layout_marginStart="10dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nama Dosen"
+                android:fontFamily="@font/montserrat_semibold"
+                android:layout_gravity="center_vertical"
+                android:textSize="12sp"
+                android:textColor="@color/colorText"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/icon_status"
+                android:layout_marginEnd="10dp"
+                android:layout_marginStart="10dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Hadir"
+                android:fontFamily="@font/montserrat_semibold"
+                android:layout_gravity="center_vertical"
+                android:textSize="12sp"
+                android:textColor="@color/colorText"/>
+        </LinearLayout>
+
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingTop="5dp">
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/icon_clock"
-            android:layout_marginEnd="10dp"
-            android:layout_marginStart="10dp"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="12 Desember 2019 10:10"
-            android:fontFamily="@font/montserrat_semibold"
-            android:layout_gravity="center_vertical"
-            android:textSize="12sp"
-            android:textColor="@color/colorText"/>
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="2dp">
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/icon_dosen"
-            android:layout_marginEnd="10dp"
-            android:layout_marginStart="10dp"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Nama Dosen"
-            android:fontFamily="@font/montserrat_semibold"
-            android:layout_gravity="center_vertical"
-            android:textSize="12sp"
-            android:textColor="@color/colorText"/>
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="2dp">
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/icon_status"
-            android:layout_marginEnd="10dp"
-            android:layout_marginStart="10dp"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Hadir"
-            android:fontFamily="@font/montserrat_semibold"
-            android:layout_gravity="center_vertical"
-            android:textSize="12sp"
-            android:textColor="@color/colorText"/>
-    </LinearLayout>
-
-</LinearLayout>
+</androidx.cardview.widget.CardView>
