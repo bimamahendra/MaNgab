@@ -16,7 +16,6 @@
         <activity
             android:name=".activity.ChangePasswordActivity"
             android:noHistory="true" />
-        <activity android:name=".activity.ScanResultActivity" />
         <activity android:name=".activity.HistoryActivity" />
         <activity android:name=".activity.SplashScreenActivity">
             <intent-filter>

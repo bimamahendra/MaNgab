@@ -4,12 +4,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.stiki.mangab.R;
 import com.stiki.mangab.adapter.HistoryAbsensiAdapter;
-import com.stiki.mangab.adapter.RekapAbsensiAdapter;
 import com.stiki.mangab.api.Api;
 import com.stiki.mangab.api.ApiClient;
 import com.stiki.mangab.api.response.HistoryAbsensiResponse;
@@ -43,8 +44,11 @@ public class HistoryActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<HistoryAbsensiResponse> call, Response<HistoryAbsensiResponse> response) {
                 if (response.code() == 200) {
-                    if (!response.body().data.isEmpty()) {
+                    if (!response.body().error) {
                         setRecyclerView(response.body().data);
+                    }else {
+                        Toast.makeText(HistoryActivity.this, response.body().message,
+                                Toast.LENGTH_SHORT).show();
                     }
                 }
             }
@@ -59,5 +63,12 @@ public class HistoryActivity extends AppCompatActivity {
     public void setRecyclerView(List<HistoryAbsensiResponse.HistoryAbsensiData> list) {
         rvHistory.setLayoutManager(new LinearLayoutManager(this));
         rvHistory.setAdapter(new HistoryAbsensiAdapter(list));
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
     }
 }
