@@ -73,13 +73,12 @@ public class ResultActivity extends AppCompatActivity implements Callback<Detail
 
         ivQR.setImageBitmap(bmp);
 
-        handler.postDelayed(runnable, 5000);
-
         btnDone.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), RekapActivity.class);
                 intent.putExtra("absen", (ArrayList)((DetailAbsensiAdapter) rvList.getAdapter()).getDataMhs());
+                intent.putExtra("qrcode", generateQrCodeResponse.qrCode);
                 startActivity(intent);
             }
         });
@@ -88,6 +87,18 @@ public class ResultActivity extends AppCompatActivity implements Callback<Detail
     @Override
     public void onBackPressed() {
 
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        handler.postDelayed(runnable, 5000);
+    }
+
+    @Override
+    protected void onPause() {
+        handler.removeCallbacks(runnable);
+        super.onPause();
     }
 
     @Override

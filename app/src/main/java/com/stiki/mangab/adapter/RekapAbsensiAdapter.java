@@ -16,10 +16,17 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class RekapAbsensiAdapter extends RecyclerView.Adapter<RekapAbsensiAdapter.RekapAbsensiVH> {
-    private List<DetailAbsenResponse.MhsData> listMhs;
+    public interface RekapAbsensiListener{
+        void onIzinMhs(DetailAbsenResponse.MhsData data);
+        void onSakitMhs(DetailAbsenResponse.MhsData data);
+    }
 
-    public RekapAbsensiAdapter(List<DetailAbsenResponse.MhsData> listMhs){
+    private List<DetailAbsenResponse.MhsData> listMhs;
+    private RekapAbsensiListener listener;
+
+    public RekapAbsensiAdapter(List<DetailAbsenResponse.MhsData> listMhs, RekapAbsensiListener listener){
         this.listMhs = listMhs;
+        this.listener = listener;
     }
 
     @NonNull
@@ -35,14 +42,20 @@ public class RekapAbsensiAdapter extends RecyclerView.Adapter<RekapAbsensiAdapte
         holder.tvName.setText(listMhs.get(position).nama);
         holder.tvStatus.setText("( Alpa )");
 
+        if(listMhs.get(position).statusAbsen == 2){
+            holder.tvStatus.setText("( Izin )");
+        }else if(listMhs.get(position).statusAbsen == 3){
+            holder.tvStatus.setText("( Sakit )");
+        }
+
         holder.btnIzin.setOnClickListener(v -> {
             AlertDialog alertDialog = new AlertDialog.Builder(v.getContext()).create();
             alertDialog.setMessage("Change attendance to \"Izin\"?");
             alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "Yes",
                     (dialog, which) -> {
                         listMhs.get(position).statusAbsen = 2;
-                        holder.tvStatus.setText("( Izin )");
                         notifyDataSetChanged();
+                        listener.onIzinMhs(listMhs.get(position));
                     });
             alertDialog.setButton(AlertDialog.BUTTON_NEGATIVE, "No",
                     (dialog, which) -> dialog.dismiss());
@@ -55,8 +68,8 @@ public class RekapAbsensiAdapter extends RecyclerView.Adapter<RekapAbsensiAdapte
             alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "Yes",
                     (dialog, which) -> {
                         listMhs.get(position).statusAbsen = 3;
-                        holder.tvStatus.setText("( Sakit )");
                         notifyDataSetChanged();
+                        listener.onSakitMhs(listMhs.get(position));
                     });
             alertDialog.setButton(AlertDialog.BUTTON_NEGATIVE, "No",
                     (dialog, which) -> dialog.dismiss());

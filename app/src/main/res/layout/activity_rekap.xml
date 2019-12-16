@@ -15,6 +15,13 @@
         android:layout_height="0dp"
         android:layout_weight="1"/>
 
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:height="100dp"
+        android:hint="Catatan"
+        android:id="@+id/etNote"/>
+
     <Button
         android:id="@+id/btnRekap"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"

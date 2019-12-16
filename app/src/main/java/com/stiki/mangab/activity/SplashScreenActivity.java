@@ -40,7 +40,7 @@ public class SplashScreenActivity extends AppCompatActivity {
                 Manifest.permission.READ_PHONE_STATE,
         };
 
-        if(hasPermissions(PERMISSIONS)){
+        if(!hasPermissions(PERMISSIONS)){
             ActivityCompat.requestPermissions(this, PERMISSIONS, 0);
         }else {
             checkStatusLogin();
