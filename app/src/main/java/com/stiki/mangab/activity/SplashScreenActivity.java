@@ -39,6 +39,7 @@ public class SplashScreenActivity extends AppCompatActivity {
 
         String[] PERMISSIONS = {
                 Manifest.permission.READ_PHONE_STATE,
+                Manifest.permission.CAMERA,
         };
 
         if(!hasPermissions(PERMISSIONS)){

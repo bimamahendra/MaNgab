@@ -96,6 +96,10 @@ public class ScanActivity extends AppCompatActivity implements ZXingScannerView.
                     isCaptured = false;
                     Toast.makeText(ScanActivity.this, response.body().message, Toast.LENGTH_SHORT).show();
                     finish();
+                    Intent intent = new Intent(getApplicationContext(), ScanResultActivity.class);
+                    intent.putExtra("error", response.body().error);
+                    intent.putExtra("message", response.body().message);
+                    startActivity(intent);
                 }
 
                 @Override

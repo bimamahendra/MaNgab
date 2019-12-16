@@ -2,6 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.stiki.mangab">
 
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:name=".CoreApplication"
         android:allowBackup="true"
@@ -11,7 +15,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".activity.HistoryMhsActivity"></activity>
+        <activity android:name=".activity.ScanResultActivity"></activity>
+        <activity android:name=".activity.HistoryMhsActivity" />
         <activity android:name=".activity.RekapActivity" />
         <activity
             android:name=".activity.ChangePasswordActivity"
@@ -32,9 +37,5 @@
             android:name=".activity.LoginActivity"
             android:noHistory="true" />
     </application>
-    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
-    <uses-permission android:name="android.permission.CAMERA" />
-
-    <uses-permission android:name="android.permission.INTERNET" />
 
 </manifest>
