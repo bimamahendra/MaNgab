@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
     private Api api = ApiClient.getClient();
     private User user;
 
-    private CardView cvScan, cvGenerate;
+    private CardView cvScan, cvGenerate, cvHistory;
     TextView tvCurrentDate, tvName, tvNoInduk;
     private Button btnLogout;
 
@@ -44,6 +44,7 @@ public class MainActivity extends AppCompatActivity {
 
         cvScan = findViewById(R.id.cvScan);
         cvGenerate = findViewById(R.id.cvGenerate);
+        cvHistory = findViewById(R.id.cvHistory);
         btnLogout = findViewById(R.id.btnLogout);
         tvCurrentDate = findViewById(R.id.tvCurrentDate);
         tvName = findViewById(R.id.tvName);
@@ -69,6 +70,13 @@ public class MainActivity extends AppCompatActivity {
         cvGenerate.setOnClickListener(v -> {
             Intent intent = new Intent(MainActivity.this, GenerateActivity.class);
             startActivity(intent);
+        });
+        cvHistory.setOnClickListener(v -> {
+            if(user.type.equalsIgnoreCase("Mahasiswa")){
+                startActivity(new Intent(getApplicationContext(), HistoryMhsActivity.class));
+            }else {
+                startActivity(new Intent(getApplicationContext(), HistoryActivity.class));
+            }
         });
 
         btnLogout.setOnClickListener(v -> api.logout(user.noInduk).enqueue(new Callback<BaseResponse>() {
