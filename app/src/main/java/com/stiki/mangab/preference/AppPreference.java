@@ -27,7 +27,9 @@ public class AppPreference {
     }
 
     public static void removeUser(Context context){
-        context.getSharedPreferences(PREF, Context.MODE_PRIVATE)
-                .edit().remove(USER_PREF).apply();
+        SharedPreferences pref = context.getSharedPreferences(PREF, Context.MODE_PRIVATE);
+        if(pref.contains(USER_PREF)){
+            pref.edit().remove(USER_PREF).apply();
+        }
     }
 }

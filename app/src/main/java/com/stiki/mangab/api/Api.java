@@ -4,6 +4,7 @@ import com.stiki.mangab.api.response.BaseResponse;
 import com.stiki.mangab.api.response.CheckStatusLoginResponse;
 import com.stiki.mangab.api.response.DetailAbsenResponse;
 import com.stiki.mangab.api.response.GenerateQrCodeResponse;
+import com.stiki.mangab.api.response.HistoryAbsensiMhsResponse;
 import com.stiki.mangab.api.response.HistoryAbsensiResponse;
 import com.stiki.mangab.api.response.LoginResponse;
 import com.stiki.mangab.api.response.MyClassResponse;
@@ -55,9 +56,13 @@ public interface Api {
     @FormUrlEncoded
     Call<DetailAbsenResponse> detailAbsen(@Field("id_absen") String idAbsen);
 
-    @POST("absen/historyAbsensi")
+    @POST("absen/historyAbsensiDosen")
     @FormUrlEncoded
-    Call<HistoryAbsensiResponse> historyAbsensi(@Field("no_induk") String noInduk);
+    Call<HistoryAbsensiResponse> historyAbsensiDosen(@Field("no_induk") String noInduk);
+
+    @POST("absen/historyAbsensiMhs")
+    @FormUrlEncoded
+    Call<HistoryAbsensiMhsResponse> historyAbsensiMhs(@Field("no_induk") String noInduk);
 
     @POST("absen/rekap")
     @FormUrlEncoded

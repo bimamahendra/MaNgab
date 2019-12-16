@@ -75,6 +75,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<BaseResponse> call, Response<BaseResponse> response) {
                 if (!response.body().error) {
+                    AppPreference.removeUser(getApplicationContext());
                     Toast.makeText(MainActivity.this, response.body().message, Toast.LENGTH_SHORT).show();
                     startActivity(new Intent(getApplicationContext(), LoginActivity.class));
                     finishAffinity();
@@ -89,4 +90,7 @@ public class MainActivity extends AppCompatActivity {
             }
         }));
     }
+
+    @Override
+    public void onBackPressed() {}
 }

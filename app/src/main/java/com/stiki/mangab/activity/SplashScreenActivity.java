@@ -15,6 +15,7 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.provider.Settings;
 import android.telephony.TelephonyManager;
 import android.util.Log;
@@ -48,31 +49,34 @@ public class SplashScreenActivity extends AppCompatActivity {
     }
 
     private void checkStatusLogin(){
-        Log.e("Device Id", getDeviceId());
-
-        api.checkStatusLogin(getDeviceId()).enqueue(new Callback<CheckStatusLoginResponse>() {
+        new Handler().postDelayed(new Runnable() {
             @Override
-            public void onResponse(Call<CheckStatusLoginResponse> call, Response<CheckStatusLoginResponse> response) {
-                if (response.body().error) {
-                    startActivity(new Intent(getApplicationContext(), LoginActivity.class));
-                    finishAffinity();
-                } else {
-                    AppPreference.saveUser(getApplicationContext(), response.body().toUser());
-                    if(response.body().statusPassword == 0){
-                        startActivity(new Intent(getApplicationContext(), ChangePasswordActivity.class));
-                        finishAffinity();
-                    }else {
-                        startActivity(new Intent(getApplicationContext(), MainActivity.class));
-                        finishAffinity();
+            public void run() {
+                api.checkStatusLogin(getDeviceId()).enqueue(new Callback<CheckStatusLoginResponse>() {
+                    @Override
+                    public void onResponse(Call<CheckStatusLoginResponse> call, Response<CheckStatusLoginResponse> response) {
+                        if (response.body().error) {
+                            startActivity(new Intent(getApplicationContext(), LoginActivity.class));
+                            finishAffinity();
+                        } else {
+                            AppPreference.saveUser(getApplicationContext(), response.body().toUser());
+                            if(response.body().statusPassword == 0){
+                                startActivity(new Intent(getApplicationContext(), ChangePasswordActivity.class));
+                                finishAffinity();
+                            }else {
+                                startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                                finishAffinity();
+                            }
+                        }
                     }
-                }
-            }
 
-            @Override
-            public void onFailure(Call<CheckStatusLoginResponse> call, Throwable t) {
-                Log.e("checkStatusLogin", t.getMessage());
+                    @Override
+                    public void onFailure(Call<CheckStatusLoginResponse> call, Throwable t) {
+                        Log.e("checkStatusLogin", t.getMessage());
+                    }
+                });
             }
-        });
+        }, 2000);
     }
 
     @Override

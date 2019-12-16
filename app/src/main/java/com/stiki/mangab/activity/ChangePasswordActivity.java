@@ -45,10 +45,14 @@ public class ChangePasswordActivity extends AppCompatActivity {
         btnChangePassword.setOnClickListener(v -> api.changePassword(user.noInduk, etPasswordConfirm.getText().toString()).enqueue(new Callback<BaseResponse>() {
             @Override
             public void onResponse(Call<BaseResponse> call, Response<BaseResponse> response) {
-                if (!response.body().error) {
+                if(!etPasswordNew.getText().toString().equals(etPasswordConfirm.getText().toString())){
+                    Toast.makeText(ChangePasswordActivity.this, "Confirm password is not same", Toast.LENGTH_SHORT).show();
+                }else {
+                    if (!response.body().error) {
                         startActivity(new Intent(getApplicationContext(), MainActivity.class));
-                } else {
-                    Toast.makeText(ChangePasswordActivity.this, response.body().message, Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(ChangePasswordActivity.this, response.body().message, Toast.LENGTH_SHORT).show();
+                    }
                 }
             }
 
