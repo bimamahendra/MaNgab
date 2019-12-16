@@ -16,6 +16,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class DetailAbsensiAdapter extends RecyclerView.Adapter<DetailAbsensiAdapter.DetailAbsensiVH> {
+
     private List<DetailAbsenResponse.MhsData> dataMhs;
 
     public DetailAbsensiAdapter(List<DetailAbsenResponse.MhsData> data){

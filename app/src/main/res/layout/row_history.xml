@@ -24,6 +24,7 @@
                 android:layout_marginStart="10dp"/>
 
             <TextView
+                android:id="@+id/tvMataKuliahClass"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Mata Kuliah"
@@ -46,6 +47,7 @@
                 android:layout_marginStart="10dp"/>
 
             <TextView
+                android:id="@+id/tvClassDateTime"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="12 Desember 2019 10:10"
@@ -55,27 +57,6 @@
                 android:textColor="@color/colorText"/>
         </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="2dp">
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/icon_dosen"
-                android:layout_marginEnd="10dp"
-                android:layout_marginStart="10dp"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Nama Dosen"
-                android:fontFamily="@font/montserrat_semibold"
-                android:layout_gravity="center_vertical"
-                android:textSize="12sp"
-                android:textColor="@color/colorText"/>
-        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -90,6 +71,7 @@
                 android:layout_marginStart="10dp"/>
 
             <TextView
+                android:id="@+id/tvTopik"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Hadir"

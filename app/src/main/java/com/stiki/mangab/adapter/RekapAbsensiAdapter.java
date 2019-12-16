@@ -16,6 +16,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class RekapAbsensiAdapter extends RecyclerView.Adapter<RekapAbsensiAdapter.RekapAbsensiVH> {
+
     public interface RekapAbsensiListener{
         void onIzinMhs(DetailAbsenResponse.MhsData data);
         void onSakitMhs(DetailAbsenResponse.MhsData data);

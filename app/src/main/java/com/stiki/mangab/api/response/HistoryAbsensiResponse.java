@@ -8,7 +8,7 @@ public class HistoryAbsensiResponse extends BaseResponse {
     @SerializedName("data")
     public List<HistoryAbsensiData> data;
 
-    static class HistoryAbsensiData {
+    public static class HistoryAbsensiData {
         @SerializedName("kode_matkul")
         public String kodeMatkul;
 
