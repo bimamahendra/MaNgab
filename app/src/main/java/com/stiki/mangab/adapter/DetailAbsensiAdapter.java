@@ -1,6 +1,5 @@
 package com.stiki.mangab.adapter;
 
-import android.media.Image;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -47,10 +46,10 @@ public class DetailAbsensiAdapter extends RecyclerView.Adapter<DetailAbsensiAdap
     }
 
     class DetailAbsensiVH extends RecyclerView.ViewHolder{
-        public TextView tvName, tvNrp;
-        public ImageView ivStatus;
+        TextView tvName, tvNrp;
+        ImageView ivStatus;
 
-        public DetailAbsensiVH(@NonNull View itemView) {
+        DetailAbsensiVH(@NonNull View itemView) {
             super(itemView);
             tvName = itemView.findViewById(R.id.tvName);
             tvNrp = itemView.findViewById(R.id.tvNRP);
