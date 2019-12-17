@@ -9,6 +9,7 @@ import retrofit2.Response;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -67,8 +68,7 @@ public class RekapActivity extends AppCompatActivity implements RekapAbsensiAdap
                     @Override
                     public void onResponse(Call<BaseResponse> call, Response<BaseResponse> response) {
                         if(!response.body().error){
-                            Toast.makeText(RekapActivity.this, response.message(),
-                                    Toast.LENGTH_SHORT).show();
+                            Toast.makeText(RekapActivity.this, response.message(), Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent(getApplicationContext(), HistoryActivity.class);
                             intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                             startActivity(intent);
@@ -92,7 +92,8 @@ public class RekapActivity extends AppCompatActivity implements RekapAbsensiAdap
         api.absenMhs(qrCode, data.nrp, "2").enqueue(new Callback<BaseResponse>() {
             @Override
             public void onResponse(Call<BaseResponse> call, Response<BaseResponse> response) {
-                Toast.makeText(RekapActivity.this, response.body().message, Toast.LENGTH_SHORT).show();
+                Log.e("Izin", "Sukses");
+//                Toast.makeText(RekapActivity.this, response.body().message, Toast.LENGTH_SHORT).show();
             }
 
             @Override
@@ -107,7 +108,8 @@ public class RekapActivity extends AppCompatActivity implements RekapAbsensiAdap
         api.absenMhs(qrCode, data.nrp, "3").enqueue(new Callback<BaseResponse>() {
             @Override
             public void onResponse(Call<BaseResponse> call, Response<BaseResponse> response) {
-                Toast.makeText(RekapActivity.this, response.body().message, Toast.LENGTH_SHORT).show();
+                Log.e("Sakit", "Sukses");
+//                Toast.makeText(RekapActivity.this, response.body().message, Toast.LENGTH_SHORT).show();
             }
 
             @Override
