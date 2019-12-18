@@ -65,7 +65,7 @@
             android:id="@+id/etNRP"
             android:drawablePadding="20dp"
             android:drawableRight="@drawable/ic_recent_actors_black_24dp"
-            android:hint="112345"
+            android:hint="12345"
             android:fontFamily="@font/montserrat_semibold"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

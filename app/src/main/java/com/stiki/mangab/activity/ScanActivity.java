@@ -26,6 +26,8 @@ import com.stiki.mangab.preference.AppPreference;
 
 import org.json.JSONException;
 
+import java.net.UnknownHostException;
+
 import me.dm7.barcodescanner.zxing.ZXingScannerView;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -113,6 +115,10 @@ public class ScanActivity extends AppCompatActivity implements ZXingScannerView.
                         intent.putExtra("error", true);
                         intent.putExtra("message", "Invalid QR Code");
                         startActivity(intent);
+                    } else if(t instanceof UnknownHostException){
+                        Toast.makeText(getApplicationContext(), "No Internet Connection", Toast.LENGTH_SHORT).show();
+                    }else {
+                        t.printStackTrace();
                     }
                 }
             });

@@ -24,6 +24,7 @@ import com.stiki.mangab.api.ApiClient;
 import com.stiki.mangab.api.response.DetailAbsenResponse;
 import com.stiki.mangab.api.response.GenerateQrCodeResponse;
 
+import java.net.UnknownHostException;
 import java.util.ArrayList;
 
 public class ResultActivity extends AppCompatActivity implements Callback<DetailAbsenResponse> {
@@ -112,6 +113,10 @@ public class ResultActivity extends AppCompatActivity implements Callback<Detail
 
     @Override
     public void onFailure(Call<DetailAbsenResponse> call, Throwable t) {
-        Toast.makeText(this, t.getMessage(), Toast.LENGTH_SHORT).show();
+        if(t instanceof UnknownHostException){
+            Toast.makeText(getApplicationContext(), "No Internet Connection", Toast.LENGTH_SHORT).show();
+        }else {
+            t.printStackTrace();
+        }
     }
 }

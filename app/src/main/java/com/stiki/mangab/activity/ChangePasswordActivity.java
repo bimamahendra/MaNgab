@@ -16,6 +16,8 @@ import com.stiki.mangab.api.response.BaseResponse;
 import com.stiki.mangab.model.User;
 import com.stiki.mangab.preference.AppPreference;
 
+import java.net.UnknownHostException;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -58,6 +60,11 @@ public class ChangePasswordActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<BaseResponse> call, Throwable t) {
+                if(t instanceof UnknownHostException){
+                    Toast.makeText(getApplicationContext(), "No Internet Connection", Toast.LENGTH_SHORT).show();
+                }else {
+                    t.printStackTrace();
+                }
                 Log.e("ChangePassword", t.getMessage());
             }
         }));

@@ -19,6 +19,8 @@ import android.os.Handler;
 import android.provider.Settings;
 import android.telephony.TelephonyManager;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.stiki.mangab.R;
@@ -28,8 +30,13 @@ import com.stiki.mangab.api.response.CheckStatusLoginResponse;
 import com.stiki.mangab.model.User;
 import com.stiki.mangab.preference.AppPreference;
 
+import java.net.UnknownHostException;
+
 public class SplashScreenActivity extends AppCompatActivity {
+
     private Api api;
+
+    private Button btnRetry;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +44,13 @@ public class SplashScreenActivity extends AppCompatActivity {
         setContentView(R.layout.activity_splash_screen);
 
         api = ApiClient.getClient();
+        btnRetry = findViewById(R.id.btnRetry);
+
+        btnRetry.setOnClickListener(v -> {
+            Intent intent = new Intent(getApplicationContext(), SplashScreenActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(intent);
+        });
 
         String[] PERMISSIONS = {
                 Manifest.permission.READ_PHONE_STATE,
@@ -59,6 +73,7 @@ public class SplashScreenActivity extends AppCompatActivity {
                                 @Override
                                 public void onResponse(Call<CheckStatusLoginResponse> call, Response<CheckStatusLoginResponse> response) {
                                     if (response.body().error) {
+                                        Toast.makeText(SplashScreenActivity.this, response.body().message, Toast.LENGTH_SHORT).show();
                                         startActivity(new Intent(getApplicationContext(), LoginActivity.class));
                                         finishAffinity();
                                     } else {
@@ -75,7 +90,12 @@ public class SplashScreenActivity extends AppCompatActivity {
 
                                 @Override
                                 public void onFailure(Call<CheckStatusLoginResponse> call, Throwable t) {
-                                    Log.e("checkStatusLogin", t.getMessage());
+                                    if(t instanceof UnknownHostException){
+                                        Toast.makeText(getApplicationContext(), "No Internet Connection", Toast.LENGTH_SHORT).show();
+                                        btnRetry.setVisibility(View.VISIBLE);
+                                    }else {
+                                        t.printStackTrace();
+                                    }
                                 }
                             }),
                     2000);
@@ -106,6 +126,12 @@ public class SplashScreenActivity extends AppCompatActivity {
 
                                     @Override
                                     public void onFailure(Call<CheckStatusLoginResponse> call, Throwable t) {
+                                        if(t instanceof UnknownHostException){
+                                            Toast.makeText(getApplicationContext(), "No Internet Connection", Toast.LENGTH_SHORT).show();
+                                            btnRetry.setVisibility(View.VISIBLE);
+                                        }else {
+                                            t.printStackTrace();
+                                        }
                                         Log.e("checkStatusLogin", t.getMessage());
                                     }
                                 }),

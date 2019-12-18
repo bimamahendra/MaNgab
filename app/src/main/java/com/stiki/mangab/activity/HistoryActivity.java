@@ -3,9 +3,11 @@ package com.stiki.mangab.activity;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -17,6 +19,7 @@ import com.stiki.mangab.api.response.HistoryAbsensiResponse;
 import com.stiki.mangab.model.User;
 import com.stiki.mangab.preference.AppPreference;
 
+import java.net.UnknownHostException;
 import java.util.List;
 
 import retrofit2.Call;
@@ -29,6 +32,7 @@ public class HistoryActivity extends AppCompatActivity {
     private User user;
 
     private RecyclerView rvHistory;
+    private SwipeRefreshLayout srlHistory;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,7 +43,20 @@ public class HistoryActivity extends AppCompatActivity {
         user = AppPreference.getUser(this);
 
         rvHistory = findViewById(R.id.rvHistory);
+        srlHistory = findViewById(R.id.srlHistory);
 
+        getHistory();
+
+        srlHistory.setOnRefreshListener(() -> {
+            Handler handler = new Handler();
+            handler.postDelayed(() -> {
+                getHistory();
+                srlHistory.setRefreshing(false);
+            }, 2500);
+        });
+    }
+
+    public void getHistory() {
         api.historyAbsensiDosen(user.noInduk).enqueue(new Callback<HistoryAbsensiResponse>() {
             @Override
             public void onResponse(Call<HistoryAbsensiResponse> call, Response<HistoryAbsensiResponse> response) {
@@ -55,6 +72,11 @@ public class HistoryActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<HistoryAbsensiResponse> call, Throwable t) {
+                if(t instanceof UnknownHostException){
+                    Toast.makeText(getApplicationContext(), "No Internet Connection", Toast.LENGTH_SHORT).show();
+                }else {
+                    t.printStackTrace();
+                }
                 Log.e("getHistory", t.getMessage());
             }
         });

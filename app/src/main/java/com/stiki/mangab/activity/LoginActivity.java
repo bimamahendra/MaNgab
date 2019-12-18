@@ -20,6 +20,8 @@ import com.stiki.mangab.api.ApiClient;
 import com.stiki.mangab.api.response.LoginResponse;
 import com.stiki.mangab.preference.AppPreference;
 
+import java.net.UnknownHostException;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -58,7 +60,11 @@ public class LoginActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<LoginResponse> call, Throwable t) {
-                Log.e("FailLogin", t.getMessage());
+                if(t instanceof UnknownHostException){
+                    Toast.makeText(getApplicationContext(), "No Internet Connection", Toast.LENGTH_SHORT).show();
+                }else {
+                    t.printStackTrace();
+                }
             }
         }));
     }

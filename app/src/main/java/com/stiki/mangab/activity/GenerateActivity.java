@@ -30,6 +30,7 @@ import com.stiki.mangab.model.User;
 import com.stiki.mangab.preference.AppPreference;
 
 import java.io.ByteArrayOutputStream;
+import java.net.UnknownHostException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
@@ -70,7 +71,7 @@ public class GenerateActivity extends AppCompatActivity implements View.OnClickL
         etTopic = findViewById(R.id.etTopic);
 
         tvDosenName.setText(user.nama);
-        tvDate.setText(new SimpleDateFormat("MM dd, yyyy", Locale.getDefault())
+        tvDate.setText(new SimpleDateFormat("MMMM dd, yyyy", Locale.getDefault())
                 .format(Calendar.getInstance().getTime()));
 
         api.myLecture(user.noInduk).enqueue(new Callback<MyLectureResponse>() {
@@ -87,7 +88,11 @@ public class GenerateActivity extends AppCompatActivity implements View.OnClickL
 
             @Override
             public void onFailure(Call<MyLectureResponse> call, Throwable t) {
-
+                if(t instanceof UnknownHostException){
+                    Toast.makeText(getApplicationContext(), "No Internet Connection", Toast.LENGTH_SHORT).show();
+                }else {
+                    t.printStackTrace();
+                }
             }
         });
 
@@ -105,7 +110,11 @@ public class GenerateActivity extends AppCompatActivity implements View.OnClickL
 
                     @Override
                     public void onFailure(Call<MyClassResponse> call, Throwable t) {
-
+                        if(t instanceof UnknownHostException){
+                            Toast.makeText(getApplicationContext(), "No Internet Connection", Toast.LENGTH_SHORT).show();
+                        }else {
+                            t.printStackTrace();
+                        }
                     }
                 });
             }
@@ -175,7 +184,11 @@ public class GenerateActivity extends AppCompatActivity implements View.OnClickL
 
                 @Override
                 public void onFailure(Call<GenerateQrCodeResponse> call, Throwable t) {
-                    Toast.makeText(GenerateActivity.this, t.getMessage(), Toast.LENGTH_SHORT).show();
+                    if(t instanceof UnknownHostException){
+                        Toast.makeText(getApplicationContext(), "No Internet Connection", Toast.LENGTH_SHORT).show();
+                    }else {
+                        t.printStackTrace();
+                    }
                 }
             });
         }

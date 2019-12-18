@@ -18,6 +18,7 @@ import com.stiki.mangab.api.response.BaseResponse;
 import com.stiki.mangab.model.User;
 import com.stiki.mangab.preference.AppPreference;
 
+import java.net.UnknownHostException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
@@ -94,6 +95,11 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<BaseResponse> call, Throwable t) {
+                if(t instanceof UnknownHostException){
+                    Toast.makeText(getApplicationContext(), "No Internet Connection", Toast.LENGTH_SHORT).show();
+                }else {
+                    t.printStackTrace();
+                }
                 Log.e("logout", t.getMessage());
             }
         }));

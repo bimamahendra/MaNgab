@@ -22,6 +22,7 @@ import com.stiki.mangab.api.ApiClient;
 import com.stiki.mangab.api.response.BaseResponse;
 import com.stiki.mangab.api.response.DetailAbsenResponse;
 
+import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Consumer;
@@ -68,7 +69,7 @@ public class RekapActivity extends AppCompatActivity implements RekapAbsensiAdap
                     @Override
                     public void onResponse(Call<BaseResponse> call, Response<BaseResponse> response) {
                         if(!response.body().error){
-                            Toast.makeText(RekapActivity.this, response.message(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(RekapActivity.this, response.body().message, Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent(getApplicationContext(), HistoryActivity.class);
                             intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                             startActivity(intent);
@@ -80,7 +81,11 @@ public class RekapActivity extends AppCompatActivity implements RekapAbsensiAdap
 
                     @Override
                     public void onFailure(Call<BaseResponse> call, Throwable t) {
-                        Toast.makeText(RekapActivity.this, t.getMessage(), Toast.LENGTH_SHORT).show();
+                        if(t instanceof UnknownHostException){
+                            Toast.makeText(getApplicationContext(), "No Internet Connection", Toast.LENGTH_SHORT).show();
+                        }else {
+                            t.printStackTrace();
+                        }
                     }
                 });
             }
@@ -98,7 +103,11 @@ public class RekapActivity extends AppCompatActivity implements RekapAbsensiAdap
 
             @Override
             public void onFailure(Call<BaseResponse> call, Throwable t) {
-                Toast.makeText(RekapActivity.this, t.getMessage(), Toast.LENGTH_SHORT).show();
+                if(t instanceof UnknownHostException){
+                    Toast.makeText(getApplicationContext(), "No Internet Connection", Toast.LENGTH_SHORT).show();
+                }else {
+                    t.printStackTrace();
+                }
             }
         });
     }
@@ -114,7 +123,11 @@ public class RekapActivity extends AppCompatActivity implements RekapAbsensiAdap
 
             @Override
             public void onFailure(Call<BaseResponse> call, Throwable t) {
-                Toast.makeText(RekapActivity.this, t.getMessage(), Toast.LENGTH_SHORT).show();
+                if(t instanceof UnknownHostException){
+                    Toast.makeText(getApplicationContext(), "No Internet Connection", Toast.LENGTH_SHORT).show();
+                }else {
+                    t.printStackTrace();
+                }
             }
         });
     }
