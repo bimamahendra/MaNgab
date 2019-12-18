@@ -3,6 +3,8 @@ package com.stiki.mangab.activity;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -12,6 +14,7 @@ public class ScanResultActivity extends AppCompatActivity {
 
     private ImageView ivMedal;
     private TextView tvKeterangan;
+    private Button btnBack;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,13 +23,18 @@ public class ScanResultActivity extends AppCompatActivity {
 
         ivMedal = findViewById(R.id.ivMedal);
         tvKeterangan = findViewById(R.id.tvKeterangan);
+        btnBack = findViewById(R.id.btnBack);
 
         if (getIntent().getBooleanExtra("error", false)) {
-            ivMedal.setImageResource(R.drawable.medal_failure);
+            ivMedal.setImageResource(R.drawable.failure);
         } else {
-            ivMedal.setImageResource(R.drawable.medal_success);
+            ivMedal.setImageResource(R.drawable.success);
         }
 
         tvKeterangan.setText(getIntent().getStringExtra("message"));
+
+        btnBack.setOnClickListener(view -> {
+            finish();
+        });
     }
 }

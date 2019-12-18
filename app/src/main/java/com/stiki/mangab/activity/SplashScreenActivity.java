@@ -25,6 +25,7 @@ import com.stiki.mangab.R;
 import com.stiki.mangab.api.Api;
 import com.stiki.mangab.api.ApiClient;
 import com.stiki.mangab.api.response.CheckStatusLoginResponse;
+import com.stiki.mangab.model.User;
 import com.stiki.mangab.preference.AppPreference;
 
 public class SplashScreenActivity extends AppCompatActivity {
@@ -50,34 +51,67 @@ public class SplashScreenActivity extends AppCompatActivity {
     }
 
     private void checkStatusLogin(){
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                api.checkStatusLogin(getDeviceId()).enqueue(new Callback<CheckStatusLoginResponse>() {
-                    @Override
-                    public void onResponse(Call<CheckStatusLoginResponse> call, Response<CheckStatusLoginResponse> response) {
-                        if (response.body().error) {
-                            startActivity(new Intent(getApplicationContext(), LoginActivity.class));
-                            finishAffinity();
-                        } else {
-                            AppPreference.saveUser(getApplicationContext(), response.body().toUser());
-                            if(response.body().statusPassword == 0){
-                                startActivity(new Intent(getApplicationContext(), ChangePasswordActivity.class));
-                                finishAffinity();
-                            }else {
-                                startActivity(new Intent(getApplicationContext(), MainActivity.class));
-                                finishAffinity();
-                            }
-                        }
-                    }
+        User user = AppPreference.getUser(this);
 
-                    @Override
-                    public void onFailure(Call<CheckStatusLoginResponse> call, Throwable t) {
-                        Log.e("checkStatusLogin", t.getMessage());
-                    }
-                });
+        if(user == null) {
+            new Handler().postDelayed(() -> api.checkStatusLogin(getDeviceId())
+                            .enqueue(new Callback<CheckStatusLoginResponse>() {
+                                @Override
+                                public void onResponse(Call<CheckStatusLoginResponse> call, Response<CheckStatusLoginResponse> response) {
+                                    if (response.body().error) {
+                                        startActivity(new Intent(getApplicationContext(), LoginActivity.class));
+                                        finishAffinity();
+                                    } else {
+                                        AppPreference.saveUser(getApplicationContext(), response.body().toUser());
+                                        if (response.body().statusPassword == 0) {
+                                            startActivity(new Intent(getApplicationContext(), ChangePasswordActivity.class));
+                                            finishAffinity();
+                                        } else {
+                                            startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                                            finishAffinity();
+                                        }
+                                    }
+                                }
+
+                                @Override
+                                public void onFailure(Call<CheckStatusLoginResponse> call, Throwable t) {
+                                    Log.e("checkStatusLogin", t.getMessage());
+                                }
+                            }),
+                    2000);
+        }else {
+            if(user.type.equalsIgnoreCase("Dosen")){
+                Intent intent = new Intent(this, MainActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(intent);
+            }else {
+                new Handler().postDelayed(() -> api.checkStatusLogin(getDeviceId())
+                                .enqueue(new Callback<CheckStatusLoginResponse>() {
+                                    @Override
+                                    public void onResponse(Call<CheckStatusLoginResponse> call, Response<CheckStatusLoginResponse> response) {
+                                        if (response.body().error) {
+                                            startActivity(new Intent(getApplicationContext(), LoginActivity.class));
+                                            finishAffinity();
+                                        } else {
+                                            AppPreference.saveUser(getApplicationContext(), response.body().toUser());
+                                            if (response.body().statusPassword == 0) {
+                                                startActivity(new Intent(getApplicationContext(), ChangePasswordActivity.class));
+                                                finishAffinity();
+                                            } else {
+                                                startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                                                finishAffinity();
+                                            }
+                                        }
+                                    }
+
+                                    @Override
+                                    public void onFailure(Call<CheckStatusLoginResponse> call, Throwable t) {
+                                        Log.e("checkStatusLogin", t.getMessage());
+                                    }
+                                }),
+                        2000);
             }
-        }, 2000);
+        }
     }
 
     @Override

@@ -94,7 +94,7 @@
             android:background="@drawable/btn_round"
             android:layout_marginTop="20dp"
             android:textAllCaps="false"
-            android:text="LOGIN"
+            android:text="Login"
             android:layout_width="match_parent"
             android:fontFamily="@font/montserrat_bold"
             android:layout_height="wrap_content" />

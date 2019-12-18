@@ -15,6 +15,7 @@ import android.widget.FrameLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.gson.JsonSyntaxException;
 import com.google.zxing.Result;
 import com.stiki.mangab.R;
 import com.stiki.mangab.api.Api;
@@ -22,6 +23,8 @@ import com.stiki.mangab.api.ApiClient;
 import com.stiki.mangab.api.response.BaseResponse;
 import com.stiki.mangab.model.User;
 import com.stiki.mangab.preference.AppPreference;
+
+import org.json.JSONException;
 
 import me.dm7.barcodescanner.zxing.ZXingScannerView;
 import retrofit2.Call;
@@ -94,7 +97,6 @@ public class ScanActivity extends AppCompatActivity implements ZXingScannerView.
                 @Override
                 public void onResponse(Call<BaseResponse> call, Response<BaseResponse> response) {
                     isCaptured = false;
-                    Toast.makeText(ScanActivity.this, response.body().message, Toast.LENGTH_SHORT).show();
                     finish();
                     Intent intent = new Intent(getApplicationContext(), ScanResultActivity.class);
                     intent.putExtra("error", response.body().error);
@@ -105,7 +107,13 @@ public class ScanActivity extends AppCompatActivity implements ZXingScannerView.
                 @Override
                 public void onFailure(Call<BaseResponse> call, Throwable t) {
                     isCaptured = false;
-                    Toast.makeText(ScanActivity.this, t.getMessage(), Toast.LENGTH_SHORT).show();
+                    if(t instanceof JsonSyntaxException){
+                        finish();
+                        Intent intent = new Intent(getApplicationContext(), ScanResultActivity.class);
+                        intent.putExtra("error", true);
+                        intent.putExtra("message", "Invalid QR Code");
+                        startActivity(intent);
+                    }
                 }
             });
         }

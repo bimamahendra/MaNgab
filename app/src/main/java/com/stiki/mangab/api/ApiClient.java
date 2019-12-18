@@ -1,5 +1,8 @@
 package com.stiki.mangab.api;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
 import java.util.concurrent.TimeUnit;
 
 import okhttp3.OkHttpClient;
@@ -26,8 +29,10 @@ public class ApiClient {
                     .addInterceptor(httpLoggingInterceptor)
                     .build();
 
+            Gson builder = new GsonBuilder().setLenient().create();
+
             retrofit = new Retrofit.Builder()
-                    .addConverterFactory(GsonConverterFactory.create())
+                    .addConverterFactory(GsonConverterFactory.create(builder))
                     .client(okHttpClient)
                     .baseUrl("http://hiyahiyahiya.xyz/mangab/api/")
                     .build();

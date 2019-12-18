@@ -13,6 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
+        tools:src="@drawable/failure"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -21,10 +22,26 @@
         android:id="@+id/tvKeterangan"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="tes"
         android:fontFamily="@font/montserrat_semibold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         app:layout_constraintTop_toBottomOf="@+id/ivMedal" />
+
+    <Button
+        android:id="@+id/btnBack"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/btn_round"
+        android:fontFamily="@font/montserrat_bold"
+        android:text="Back"
+        android:textAllCaps="false"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textColor="#FFF"
+        app:layout_constraintTop_toBottomOf="@id/tvKeterangan"
+        tools:layout_editor_absoluteX="32dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
