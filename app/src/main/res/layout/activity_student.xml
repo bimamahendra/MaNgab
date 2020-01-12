@@ -1,22 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".activity.MainActivity"
+    android:background="@android:color/white"
     android:fitsSystemWindows="true"
-    android:background="@android:color/white">
+    tools:context=".activity.MainActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="@color/colorPrimary">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/toolbar_title"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="@string/app_name"
+                android:gravity="center"
+                android:textColor="@android:color/white"
+                android:layout_alignParentStart="true"
+                android:fontFamily="@font/montserrat_bold"
+                />
+
+            <ImageView
+                android:id="@+id/toolbar_button"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:src="@drawable/ic_info_black_24dp"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_alignParentEnd="true"
+                />
+
+        </RelativeLayout>
+    </androidx.appcompat.widget.Toolbar>
 
     <LinearLayout
+        android:id="@+id/top"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         android:background="@color/colorBlue"
         android:orientation="vertical"
-        android:id="@+id/top"
-        android:padding="20dp">
+        android:padding="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar">
 
         <TextView
             android:id="@+id/tvCurrentDate"
@@ -56,136 +91,148 @@
     </LinearLayout>
 
     <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
         android:clipToPadding="false"
         android:gravity="center_horizontal"
         android:orientation="vertical"
-        android:layout_width="match_parent"
-        app:layout_constraintTop_toBottomOf="@id/top"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_height="0dp">
+        app:layout_constraintTop_toBottomOf="@id/top">
 
         <androidx.cardview.widget.CardView
-            android:foreground="?android:attr/selectableItemBackground"
-            android:clickable="true"
             android:id="@+id/cvScan"
+            CardView_cardCornerRadius="40dp"
             android:layout_width="200dp"
             android:layout_height="0dp"
-            android:layout_weight="0.8"
             android:layout_margin="10dp"
-            CardView_cardCornerRadius="40dp">
+            android:layout_weight="0.8"
+            android:clickable="true"
+            android:foreground="?android:attr/selectableItemBackground">
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:gravity="center">
+                android:gravity="center"
+                android:orientation="vertical">
+
                 <ImageView
                     android:layout_width="100dp"
                     android:layout_height="100dp"
-                    android:src="@drawable/icon_scan"/>
+                    android:src="@drawable/icon_scan" />
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textStyle="bold"
                     android:layout_marginTop="10dp"
+                    android:fontFamily="@font/montserrat_semibold"
                     android:text="Scan QR Code"
-                    android:fontFamily="@font/montserrat_semibold"/>
+                    android:textStyle="bold" />
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/montserrat_light"
                     android:gravity="center"
+                    android:padding="5dp"
                     android:text="Make Class Attendance"
-                    android:padding="5dp"
-                    android:fontFamily="@font/montserrat_light"
-                    android:textColor="@android:color/darker_gray"/>
+                    android:textColor="@android:color/darker_gray" />
 
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
-            android:foreground="?android:attr/selectableItemBackground"
-            android:clickable="true"
             android:id="@+id/cvGenerate"
+            CardView_cardCornerRadius="40dp"
             android:layout_width="200dp"
             android:layout_height="0dp"
-            android:layout_weight="0.8"
             android:layout_margin="10dp"
-            CardView_cardCornerRadius="40dp"
+            android:layout_weight="0.8"
+            android:clickable="true"
+            android:foreground="?android:attr/selectableItemBackground"
             android:visibility="gone">
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:gravity="center">
+                android:gravity="center"
+                android:orientation="vertical">
+
                 <ImageView
                     android:layout_width="100dp"
                     android:layout_height="100dp"
-                    android:src="@drawable/icon_generate"/>
+                    android:src="@drawable/icon_generate" />
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textStyle="bold"
                     android:layout_marginTop="10dp"
+                    android:fontFamily="@font/montserrat_semibold"
                     android:text="Generate QR Code"
-                    android:fontFamily="@font/montserrat_semibold"/>
+                    android:textStyle="bold" />
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="Make Attendance QR Code"
-                    android:padding="5dp"
                     android:fontFamily="@font/montserrat_light"
-                    android:textColor="@android:color/darker_gray"/>
+                    android:gravity="center"
+                    android:padding="5dp"
+                    android:text="Make Attendance QR Code"
+                    android:textColor="@android:color/darker_gray" />
 
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
-            android:foreground="?android:attr/selectableItemBackground"
-            android:clickable="true"
+            android:id="@+id/cvHistory"
+            CardView_cardCornerRadius="40dp"
             android:layout_width="200dp"
             android:layout_height="0dp"
-            android:layout_weight="0.8"
             android:layout_margin="10dp"
-            CardView_cardCornerRadius="40dp"
-            android:id="@+id/cvHistory">
+            android:layout_weight="0.8"
+            android:clickable="true"
+            android:foreground="?android:attr/selectableItemBackground">
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:gravity="center">
+                android:gravity="center"
+                android:orientation="vertical">
+
                 <ImageView
                     android:layout_width="100dp"
                     android:layout_height="100dp"
-                    android:src="@drawable/icon_historyy"/>
+                    android:src="@drawable/icon_historyy" />
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textStyle="bold"
                     android:layout_marginTop="10dp"
+                    android:fontFamily="@font/montserrat_semibold"
                     android:text="History"
-                    android:fontFamily="@font/montserrat_semibold"/>
+                    android:textStyle="bold" />
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="Show Attendace History"
-                    android:padding="5dp"
                     android:fontFamily="@font/montserrat_light"
-                    android:textColor="@android:color/darker_gray"/>
+                    android:gravity="center"
+                    android:padding="5dp"
+                    android:text="Show Attendace History"
+                    android:textColor="@android:color/darker_gray" />
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 
         <Button
             android:id="@+id/btnLogout"
-            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-            android:textColor="#FFF"
-            android:background="@drawable/btn_round"
-            android:textAllCaps="false"
-            android:text="Logout"
             android:layout_width="200dp"
-            android:fontFamily="@font/montserrat_bold"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp"/>
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/btn_round"
+            android:fontFamily="@font/montserrat_bold"
+            android:text="Logout"
+            android:textAllCaps="false"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textColor="#FFF" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

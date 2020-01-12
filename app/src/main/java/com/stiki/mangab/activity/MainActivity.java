@@ -8,8 +8,10 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.Toolbar;
 
 import com.stiki.mangab.R;
 import com.stiki.mangab.api.Api;
@@ -35,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
     private CardView cvScan, cvGenerate, cvHistory;
     TextView tvCurrentDate, tvName, tvNoInduk;
     private Button btnLogout;
+    private ImageView ivAbout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,16 +53,17 @@ public class MainActivity extends AppCompatActivity {
         tvCurrentDate = findViewById(R.id.tvCurrentDate);
         tvName = findViewById(R.id.tvName);
         tvNoInduk = findViewById(R.id.tvNoInduk);
+        ivAbout = findViewById(R.id.toolbar_button);
 
         tvCurrentDate.setText(new SimpleDateFormat("MMMM dd, yyyy", Locale.getDefault())
                 .format(Calendar.getInstance().getTime()));
         tvName.setText(user.nama);
         tvNoInduk.setText(user.noInduk);
 
-        if (user.type.equalsIgnoreCase("mahasiswa")){
+        if (user.type.equalsIgnoreCase("mahasiswa")) {
             cvGenerate.setVisibility(View.GONE);
             cvScan.setVisibility(View.VISIBLE);
-        }else{
+        } else {
             cvGenerate.setVisibility(View.VISIBLE);
             cvScan.setVisibility(View.GONE);
         }
@@ -73,11 +77,16 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
         });
         cvHistory.setOnClickListener(v -> {
-            if(user.type.equalsIgnoreCase("Mahasiswa")){
+            if (user.type.equalsIgnoreCase("Mahasiswa")) {
                 startActivity(new Intent(getApplicationContext(), HistoryMhsActivity.class));
-            }else {
+            } else {
                 startActivity(new Intent(getApplicationContext(), HistoryActivity.class));
             }
+        });
+
+        ivAbout.setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, AboutActivity.class);
+            startActivity(intent);
         });
 
         btnLogout.setOnClickListener(v -> api.logout(user.noInduk).enqueue(new Callback<BaseResponse>() {
@@ -95,9 +104,9 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<BaseResponse> call, Throwable t) {
-                if(t instanceof UnknownHostException){
+                if (t instanceof UnknownHostException) {
                     Toast.makeText(getApplicationContext(), "No Internet Connection", Toast.LENGTH_SHORT).show();
-                }else {
+                } else {
                     t.printStackTrace();
                 }
                 Log.e("logout", t.getMessage());
@@ -106,5 +115,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
-    public void onBackPressed() {}
+    public void onBackPressed() {
+    }
 }

@@ -15,7 +15,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".activity.ScanResultActivity"></activity>
+        <activity android:name=".activity.AboutActivity"></activity>
+        <activity android:name=".activity.ScanResultActivity" />
         <activity android:name=".activity.HistoryMhsActivity" />
         <activity android:name=".activity.RekapActivity" />
         <activity
