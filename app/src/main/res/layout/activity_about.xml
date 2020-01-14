@@ -26,19 +26,45 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:gravity="center">
-
-        <ImageView
-            android:layout_width="300dp"
-            android:layout_height="300dp"
-            android:src="@drawable/icon_mangab"/>
+        android:orientation="vertical">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/montserrat_bold"
-            android:text="MaNgab 1.0"
+            android:text="Hi! Welcome to MaNgab"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textColor="@color/colorText"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="25dp"
+            android:layout_marginBottom="25dp"
+            />
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:layout_width="250dp"
+            android:layout_height="250dp"
+            android:src="@drawable/me"
+            app:civ_border_color="@color/colorPrimary"
+            app:civ_border_width="5dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="25dp"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/montserrat_bold"
+            android:text="NANDA BIMA MAHENDRA"
+            android:layout_gravity="center_horizontal"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textColor="@color/colorText" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/montserrat_bold"
+            android:text="171 - 111 - 109"
+            android:layout_gravity="center_horizontal"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
             android:textColor="@color/colorText" />
 
@@ -47,8 +73,27 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:fontFamily="@font/montserrat_semibold"
-            android:text="Mahasiswa Ngabsen"
-            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:layout_marginTop="50dp"
+            android:text="Powered by"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small"
+            android:textColor="@color/colorText" />
+
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/stiki"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="5dp"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/montserrat_light"
+            android:text="MaNgab 1.0 | Copyright \u00a9 2020"
+            android:layout_marginTop="20dp"
+            android:layout_gravity="center_horizontal"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small"
             android:textColor="@color/colorText" />
 
     </LinearLayout>
