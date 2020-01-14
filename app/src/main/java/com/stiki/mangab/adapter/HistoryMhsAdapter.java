@@ -31,7 +31,7 @@ public class HistoryMhsAdapter extends RecyclerView.Adapter<HistoryMhsAdapter.Hi
 
     @Override
     public void onBindViewHolder(@NonNull HistoryAdapterVH holder, int position) {
-        holder.tvMatkul.setText(list.get(position).namaMatkul);
+        holder.tvMatkul.setText(list.get(position).namaMatkul + " | " + list.get(position).kelasMatkul);
         holder.tvAbsen.setText(list.get(position).jadwalAbsen);
         holder.tvNamaDosen.setText(list.get(position).namaDosen);
         if(list.get(position).statusAbsen == 0){
